@@ -1,0 +1,1496 @@
+{
+  "categories": {
+    "agentic_work": {
+      "alternatives": [
+        {
+          "model": "Claude Opus 5.5",
+          "reason": "Vendor: long-running agentic coding, at half Fable's price.",
+          "sources": [
+            "https://app.woofocus.com/blog/best-claude-model"
+          ]
+        },
+        {
+          "model": "Grok 4.7",
+          "reason": "Vendor: long-horizon coding with persistence and self-checking — see the model's scores below for the vendor-reported DeepSWE figure.",
+          "sources": [
+            "https://vanja.io/grok-4-7/"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Claude Fable 5.2",
+        "reason": "Vendor: long-horizon agentic work; also the MKA professional-task leader — see the model's scores below.",
+        "sources": [
+          "https://agentstacklist.com/guides/claude-fable-5-2/",
+          "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+        ]
+      },
+      "label": "Agentic multi-step work",
+      "notes": "Scores mostly agree; the one disagreement is Grok's independent standing, reported inconsistently across readings and below median — its vendor positioning is stronger than its independent scores.",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Nothing material.",
+          "pick": "Claude Fable 5.2 (or Claude Opus 5.5)",
+          "reason": "Cross-provider best pick."
+        },
+        "google": {
+          "gives_up": "Fable 5.2's long-horizon agentic lead.",
+          "pick": "Gemini 4 Carbon / Gemini 4 Hydrogen",
+          "reason": "Carbon for planning, Hydrogen for execution-heavy agents."
+        },
+        "openai": {
+          "gives_up": "Fable 5.2's long-horizon agentic lead.",
+          "pick": "GPT-6 Astra (or GPT-6.1 Sol for cost)",
+          "reason": "Most capable OpenAI model for demanding work."
+        }
+      }
+    },
+    "data_analysis": {
+      "alternatives": [
+        {
+          "model": "Claude Fable 5.2",
+          "reason": "Strongest independent-index standing in this report.",
+          "sources": [
+            "https://agentstacklist.com/guides/claude-fable-5-2/"
+          ]
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "reason": "Vendor: enterprise knowledge work.",
+          "sources": [
+            "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Claude Opus 5.5",
+        "reason": "Vendor: long-running knowledge work.",
+        "sources": [
+          "https://www.robotmunki.com/blog/llm-landscape",
+          "https://app.woofocus.com/blog/best-claude-model"
+        ]
+      },
+      "label": "Data analysis",
+      "notes": "Evidence is thinner than the coding categories — no dedicated data-analysis benchmark was found; the pick leans on vendor intent.",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Nothing material.",
+          "pick": "Claude Opus 5.5",
+          "reason": "Cross-provider best pick."
+        },
+        "google": {
+          "gives_up": "Opus 5.5's knowledge-work leadership.",
+          "pick": "Gemini 4 Argon",
+          "reason": "Enterprise knowledge work positioning."
+        },
+        "openai": {
+          "gives_up": "Opus 5.5's knowledge-work subtest leadership.",
+          "pick": "GPT-6.1 Sol",
+          "reason": "Near-Astra performance for complex work at a lower cost."
+        }
+      }
+    },
+    "deep_reasoning": {
+      "alternatives": [
+        {
+          "model": "Gemini 4 Carbon",
+          "reason": "Vendor: most difficult tasks, extended verification; MKA professional-task score in the model's scores below.",
+          "sources": [
+            "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+          ]
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "reason": "Vendor: long-running agentic coding and knowledge work.",
+          "sources": [
+            "https://www.robotmunki.com/blog/llm-landscape"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Claude Fable 5.2",
+        "reason": "Vendor: demanding reasoning; MKA professional-task leader — see the model's scores below.",
+        "sources": [
+          "https://agentstacklist.com/guides/claude-fable-5-2/",
+          "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+        ]
+      },
+      "label": "Deep reasoning / research",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Nothing material.",
+          "pick": "Claude Fable 5.2",
+          "reason": "Cross-provider best pick."
+        },
+        "google": {
+          "gives_up": "Fable 5.2 outright.",
+          "pick": "Gemini 4 Carbon",
+          "reason": "Top-tier Gemini 4."
+        },
+        "openai": {
+          "gives_up": "Fable 5.2 and Carbon, both ahead on the index.",
+          "pick": "GPT-6 Astra",
+          "reason": "OpenAI's most capable model for demanding work."
+        }
+      }
+    },
+    "everyday_coding": {
+      "alternatives": [
+        {
+          "model": "GPT-6.1 Sol",
+          "reason": "Vendor: near-Astra performance at $2/$10.",
+          "sources": [
+            "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/"
+          ]
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "reason": "Vendor: best speed/intelligence combination; Anthropic's own Terminal-Bench 4.0 figure is the highest in the Claude family — see the model's scores below.",
+          "sources": [
+            "https://aicreatorhub.net/news/claude-opus-sonnet-haiku-5-5-which-to-use-india-2026"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Gemini 4 Hydrogen",
+        "reason": "Vendor-built for everyday coding and agent work; the fastest in the Gemini family and cheapest frontier-family rate at $1.50/$7.50 with a free tier.",
+        "sources": [
+          "https://kingy.ai/news/google-gemini-4-hydrogen-launch/",
+          "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4"
+        ]
+      },
+      "label": "Everyday coding",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Hydrogen's speed and free tier.",
+          "pick": "Claude Sonnet 5.5",
+          "reason": "Best speed/intelligence combination; highest Terminal-Bench in the Claude family (vendor-reported)."
+        },
+        "google": {
+          "gives_up": "Nothing material.",
+          "pick": "Gemini 4 Hydrogen",
+          "reason": "Cross-provider best pick; nothing given up."
+        },
+        "openai": {
+          "gives_up": "Hydrogen's speed and free tier; Sonnet's terminal-bench lead.",
+          "pick": "GPT-6.1 Sol",
+          "reason": "Near-Astra performance at $2/$10."
+        }
+      }
+    },
+    "hard_engineering": {
+      "alternatives": [
+        {
+          "model": "Gemini 4 Carbon",
+          "reason": "Vendor: most difficult tasks, extended verification; Google reports #1 on CursorBench 4.0 (as reported by Google — see the model's scores below). Value pick until its price doubles Dec 1.",
+          "sources": [
+            "https://www.eesel.ai/blog/gemini-4-carbon-review"
+          ]
+        },
+        {
+          "model": "GPT-6 Astra",
+          "reason": "Vendor: most capable for the most demanding work.",
+          "sources": [
+            "https://www.c-sharpcorner.com/article/what-is-gpt-6-astra-and-when-is-it-worth-using",
+            "https://www.robotmunki.com/blog/llm-landscape"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Claude Fable 5.2",
+        "reason": "Vendor: most capable generally available Claude, long-horizon agentic work; also the MKA professional-task leader — see the model's scores below. Vendor intent and independent scores agree.",
+        "sources": [
+          "https://agentstacklist.com/guides/claude-fable-5-2/",
+          "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+        ]
+      },
+      "label": "Hard engineering / architecture",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Carbon's value (until Dec 1) and Astra's science-bench lead.",
+          "pick": "Claude Fable 5.2",
+          "reason": "Cross-provider best pick."
+        },
+        "google": {
+          "gives_up": "Fable 5.2's higher independent-index standing and MKA lead; Carbon's price doubles Dec 1.",
+          "pick": "Gemini 4 Carbon",
+          "reason": "Top-tier Gemini 4; #1 on CursorBench 4.0 as reported by Google — see the model's scores below."
+        },
+        "openai": {
+          "gives_up": "Fable 5.2's higher independent-index standing and Carbon's CursorBench lead; Astra is the priciest flagship at $10/$50.",
+          "pick": "GPT-6 Astra",
+          "reason": "OpenAI's most capable model for the most demanding work."
+        }
+      }
+    },
+    "orchestration": {
+      "alternatives": [
+        {
+          "model": "Manual routing: Gemini 4 Argon (plan) to Gemini 4 Hydrogen (execute)",
+          "reason": "Per Google's own docs, route planning turns to Argon and execution turns to Hydrogen in one session via previous_interaction_id.",
+          "sources": [
+            "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4"
+          ]
+        },
+        {
+          "model": "Manual switching (Claude/OpenAI)",
+          "reason": "Opus/Fable to plan, Sonnet/Haiku to execute; Astra to plan, 6.1 Sol to execute. Workflow inference, NOT a vendor feature — marked unverified as a product claim.",
+          "sources": []
+        }
+      ],
+      "best": {
+        "model": "Antigravity Orchestrator (Gemini 4 Carbon + Gemini 4 Hydrogen)",
+        "reason": "The only vendor-native orchestrator in this report. Carbon plans in a read-only sandbox, Hydrogen executes, control hands back to Carbon on friction. Google reports near-Carbon success on Terminal-Bench 4.1 (57.0% vs 57.3% solo Carbon) with 24% less quota and 19% faster completion (vendor-reported).",
+        "sources": [
+          "https://softreviewed.com/antigravity-orchestrator-explained/",
+          "https://winbuzzer.com/2026/11/12/google-antigravity-pairs-gemini-4-models-for-coding-xcxwbn/"
+        ]
+      },
+      "label": "Orchestration (multi-model routing)",
+      "notes": "Access: Orchestrator is Ultra/Enterprise only; standalone Hydrogen in Antigravity needs Pro or above. Benchmark version discrepancy: Google's DeepMind post says Terminal-Bench 4.0, the Antigravity blog says 4.1, for the same 24%/19% figures.",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Orchestrator itself.",
+          "pick": "None native — manual (Opus/Fable plan, Sonnet/Haiku execute)",
+          "reason": "No vendor-native orchestrator exists in Claude tooling."
+        },
+        "google": {
+          "gives_up": "Nothing — no other lab offers a vendor-native orchestrator. (Pro tier: manual Argon → Hydrogen routing.)",
+          "pick": "Antigravity Orchestrator (Ultra)",
+          "reason": "Vendor-native; unique to Google."
+        },
+        "openai": {
+          "gives_up": "Orchestrator itself; the manual pattern is a workflow inference, not a vendor feature.",
+          "pick": "None native — manual (Astra plan, 6.1 Sol execute)",
+          "reason": "No vendor-native orchestrator exists in OpenAI tooling."
+        }
+      }
+    },
+    "planning": {
+      "alternatives": [
+        {
+          "model": "Claude Fable 5.2",
+          "reason": "Vendor: demanding reasoning, long-horizon work.",
+          "sources": [
+            "https://agentstacklist.com/guides/claude-fable-5-2/"
+          ]
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "reason": "Vendor: deep, long-horizon reasoning; cheaper than Carbon after Dec 1.",
+          "sources": [
+            "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4"
+          ]
+        }
+      ],
+      "best": {
+        "model": "Gemini 4 Carbon",
+        "reason": "Vendor: 'explore thoroughly, reason deeply, and run extended verification loops.' It is the planner in Antigravity Orchestrator — the clearest vendor endorsement of its planning role.",
+        "sources": [
+          "https://www.eesel.ai/blog/gemini-4-carbon-review",
+          "https://softreviewed.com/antigravity-orchestrator-explained/"
+        ]
+      },
+      "label": "Planning",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Carbon as Orchestrator's planner.",
+          "pick": "Claude Fable 5.2 (or Claude Opus 5.5)",
+          "reason": "Demanding reasoning, long-horizon work."
+        },
+        "google": {
+          "gives_up": "Fable 5.2's top reasoning score; Argon is the fallback on Pro.",
+          "pick": "Gemini 4 Carbon (Ultra) / Gemini 4 Argon (Pro)",
+          "reason": "Carbon is Orchestrator's planner; Argon is the Pro-tier fallback."
+        },
+        "openai": {
+          "gives_up": "Carbon (Orchestrator's planner) and Fable 5.2.",
+          "pick": "GPT-6 Astra",
+          "reason": "OpenAI's most capable model for demanding work."
+        }
+      }
+    },
+    "quick_routine_jobs": {
+      "alternatives": [
+        {
+          "model": "Muse Ember",
+          "reason": "Vendor: the repeated subtasks an agent runs all day; also $0.10/$0.50.",
+          "sources": [
+            "https://personalagentbench.com/is-meta-muse-open-source/"
+          ]
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "reason": "$0.15/$0.60 off-peak, with native vision.",
+          "sources": [
+            "https://benchlm.ai/deepseek/api-pricing"
+          ]
+        }
+      ],
+      "best": {
+        "model": "GPT-6 Luna / Claude Haiku 5.5 (tie)",
+        "reason": "Both $0.10/$0.50. Luna's vendor line is 'most efficient model for focused, high-volume tasks'; Haiku's is 'high-volume, latency-sensitive tasks such as classification, extraction, and routing.' Pick Luna inside OpenAI tooling, Haiku inside Claude tooling.",
+        "sources": [
+          "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+          "https://pandromeda.com/ai/claude-haiku-55-vs-sonnet-55-vs-opus-55-price-speed-uses"
+        ]
+      },
+      "label": "Quick routine jobs",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Nothing material.",
+          "pick": "Claude Haiku 5.5",
+          "reason": "Ties Luna as the cheapest fast model anywhere."
+        },
+        "google": {
+          "gives_up": "The $0.10-tier models (Luna, Haiku, Ember) — no ultra-cheap tier exists in the Gemini family.",
+          "pick": "Gemini 4 Hydrogen",
+          "reason": "Cheapest Google option, with a free tier."
+        },
+        "openai": {
+          "gives_up": "Nothing material.",
+          "pick": "GPT-6 Luna",
+          "reason": "Ties Haiku as the cheapest fast model anywhere."
+        }
+      }
+    },
+    "writing_content": {
+      "alternatives": [
+        {
+          "model": "Claude Sonnet 5.5",
+          "reason": "Strong general writing at $2/$10.",
+          "sources": [
+            "https://app.woofocus.com/blog/best-claude-model"
+          ]
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "reason": "Vendor: enterprise knowledge work.",
+          "sources": [
+            "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4"
+          ]
+        }
+      ],
+      "best": {
+        "model": "GPT-6.1 Terra",
+        "reason": "Vendor: 'clear, natural writing' is literally in its positioning, alongside visual reasoning and computer use. $1/$5.",
+        "sources": [
+          "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/"
+        ]
+      },
+      "label": "Writing / content",
+      "notes": "Writing quality has no single public benchmark in this pass; the pick follows vendor positioning, not a score.",
+      "per_provider": {
+        "claude": {
+          "gives_up": "Terra, whose positioning is specifically clear natural writing.",
+          "pick": "Claude Sonnet 5.5",
+          "reason": "Strong general writing; best speed/intelligence combination."
+        },
+        "google": {
+          "gives_up": "Terra, whose positioning is specifically clear natural writing.",
+          "pick": "Gemini 4 Argon (or Hydrogen for drafts)",
+          "reason": "Enterprise knowledge work positioning."
+        },
+        "openai": {
+          "gives_up": "Nothing material.",
+          "pick": "GPT-6.1 Terra",
+          "reason": "Cross-provider best pick."
+        }
+      }
+    }
+  },
+  "meta": {
+    "dated": "2026-11-13",
+    "method": "Best-for picks are grounded first in the vendor's own changelog/announcement positioning. Benchmarks are secondary and subjective; where a score disagrees with vendor positioning the disagreement is flagged. Scores are cited individually with source, link and date. Artificial Analysis figures are not republished in bulk (licensing — their terms forbid redistribution, and their competitive-product clause covers comparison sites). Vendor-reported numbers are labelled as such and lead. No composite score is computed from different sources. Community notes are a planned future phase and are not included.",
+    "price_basis": "API list prices in USD per million tokens (input/output), short-context standard tier unless noted. Subscription plans bundle models with usage limits and do not bill per token.",
+    "snapshot": "Nov 11, 2026 snapshot plus Gemini 4 Carbon (GA Nov 10, 2026) and Gemini 4 Hydrogen (launched Nov 12, 2026), both dates verified",
+    "sources_note": "Vendor statements reached via secondary coverage quoting the vendor page are labelled as such in the sources arrays.",
+    "safe_sources": [
+      {
+        "name": "Artificial Analysis Intelligence Index",
+        "url": "https://artificialanalysis.ai/leaderboards/models",
+        "date": "2026-11-13",
+        "note": "Consulted during research; figures are NOT republished here (licensing)."
+      },
+      {
+        "name": "LMArena leaderboards",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "date": "2026-11-13",
+        "note": "CC BY 4.0 — freely reusable with attribution. Measures human preference (Elo votes), not task completion."
+      },
+      {
+        "name": "Epoch AI",
+        "url": null,
+        "date": "2026-11-13",
+        "note": "CC BY 4.0 — freely reusable with attribution. No figures used in this pass yet."
+      }
+    ]
+  },
+  "models": {
+    "Claude Fable 5.2": {
+      "avoid_for": [
+        "routine or high-volume work (most expensive per token in this report)",
+        "deployments requiring zero data retention"
+      ],
+      "best_for": [
+        "hardest agentic work",
+        "long-horizon reasoning",
+        "deep research",
+        "hard engineering and architecture"
+      ],
+      "context_window": "1,000,000 tokens (128K max output)",
+      "lab": "Anthropic",
+      "notes": "Same underlying model as Mythos 5.2 (Fable has cyber/bio safeguards; Mythos for vetted orgs). Knowledge cutoff June 2026. Retirement no sooner than Nov 9, 2027. No independent coding benchmark existed as of Nov 13, 2026.",
+      "price": {
+        "input": 8.0,
+        "note": "20% cut from Fable 5.1 ($10/$50). Fast mode $16/$80, up to 2.5x faster. Cache reads $0.20/M. Batch 50% off. Requires 30-day data retention. Pro/Team launch-week inclusion Nov 9-16, 2026 capped at 50% of weekly limits; full access needs Max or paid usage credits.",
+        "output": 40.0
+      },
+      "release": "2026-11-09",
+      "sources": [
+        "https://agentstacklist.com/guides/claude-fable-5-2/",
+        "https://vallettasoftware.com/blog/post/claude-fable-5-2",
+        "https://www.querynow.com/blog/claude-fable-5-2-what-cios-need-to-decide-before-turning-it-on-170765",
+        "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+      ],
+      "strengths": [
+        "Vendor: most capable generally available Claude, for demanding reasoning and long-horizon agentic work",
+        "MKA professional-task leader — see scores below.",
+        "Leads Anthropic's own benchmark table on 9 of 11 rows vs Opus 5.5, Astra, Carbon — see scores below for the vendor-reported FrontierSWE figure.",
+        "Always-on adaptive thinking, five effort levels, 30% faster output than 5.1"
+      ],
+      "tier": "flagship reasoning",
+      "scores": [
+        {
+          "label": "FrontierSWE v2",
+          "value": "69.9%",
+          "source": "Anthropic",
+          "url": "https://agentstacklist.com/guides/claude-fable-5-2/",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        },
+        {
+          "label": "MKA professional-task (Climb-WSR)",
+          "value": "56.56%",
+          "source": "MKA benchmark",
+          "url": "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html",
+          "date": "2026-11-13",
+          "kind": "independent"
+        },
+        {
+          "label": "LMArena WebDev Arena (results Nov 11, 2026)",
+          "value": "1838",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_webdev",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        },
+        {
+          "label": "LMArena Agent Arena (results Nov 11, 2026)",
+          "value": "30.4",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_agent",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        }
+      ]
+    },
+    "Claude Haiku 5.5": {
+      "avoid_for": [
+        "anything where reasoning depth is the point"
+      ],
+      "best_for": [
+        "high-volume quick jobs",
+        "classification, extraction, routing",
+        "sorting and tagging"
+      ],
+      "context_window": "1,000,000 tokens (128K max output)",
+      "lab": "Anthropic",
+      "notes": "One-fortieth the input price of Opus 5.5 for short prompts.",
+      "price": {
+        "input": 0.1,
+        "note": "$0.10/$0.50 for prompts up to 100K tokens; $0.50/$2.50 above. 90% cheaper than Haiku 4.5 for short prompts.",
+        "output": 0.5
+      },
+      "release": "2026-10-07",
+      "sources": [
+        "https://app.woofocus.com/blog/best-claude-model",
+        "https://pandromeda.com/ai/claude-haiku-55-vs-sonnet-55-vs-opus-55-price-speed-uses",
+        "https://count.co/ai/claude-sonnet-vs-opus"
+      ],
+      "strengths": [
+        "Vendor: fastest and cheapest Claude, for high-volume latency-sensitive tasks",
+        "First Haiku with effort controls"
+      ],
+      "tier": "fast volume"
+    },
+    "Claude Opus 5.5": {
+      "avoid_for": [
+        "quick terminal tasks (Sonnet 5.5 is faster and scores higher on Anthropic's own Terminal-Bench table)",
+        "high-volume routine work (Haiku costs a twentieth as much)"
+      ],
+      "best_for": [
+        "long-running agentic coding",
+        "large refactors",
+        "hard bugs",
+        "knowledge work and data analysis"
+      ],
+      "context_window": "1,000,000 tokens (128K max output)",
+      "lab": "Anthropic",
+      "notes": "Anthropic's own Terminal-Bench 4.0 figure is below Sonnet 5.5's — stated plainly in the report; see both models' scores below.",
+      "price": {
+        "input": 4.0,
+        "note": "20% under Opus 5. Half of Fable 5.2. Pro/Max plans; not on Free.",
+        "output": 20.0
+      },
+      "release": "2026-09-22",
+      "sources": [
+        "https://app.woofocus.com/blog/best-claude-model",
+        "https://pandromeda.com/ai/claude-haiku-55-vs-sonnet-55-vs-opus-55-price-speed-uses",
+        "https://aicreatorhub.net/news/claude-opus-sonnet-haiku-5-5-which-to-use-india-2026",
+        "https://count.co/ai/claude-sonnet-vs-opus"
+      ],
+      "strengths": [
+        "Vendor: flagship for long-running agentic coding and knowledge work; Anthropic's default recommendation",
+        "Fast mode up to 2.5x quicker at $8/$40"
+      ],
+      "tier": "flagship",
+      "scores": [
+        {
+          "label": "Terminal-Bench 4.0",
+          "value": "66.4%",
+          "source": "Anthropic",
+          "url": "https://aicreatorhub.net/news/claude-opus-sonnet-haiku-5-5-which-to-use-india-2026",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        },
+        {
+          "label": "LMArena WebDev Arena (results Nov 11, 2026)",
+          "value": "1815",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_webdev",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        },
+        {
+          "label": "LMArena Agent Arena (results Nov 11, 2026)",
+          "value": "19.5",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_agent",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        }
+      ]
+    },
+    "Claude Sonnet 4.6": {
+      "avoid_for": [
+        "API work where Sonnet 5.5 is cheaper ($2/$10) and stronger on the independent index",
+        "relying on the 1M window (beta, expect rough edges)"
+      ],
+      "best_for": [
+        "default Claude experience on Free/Pro",
+        "general coding and computer use (spreadsheets, web forms)",
+        "long-document work in the 1M beta window"
+      ],
+      "context_window": "1,000,000 tokens (beta)",
+      "lab": "Anthropic",
+      "notes": "Sonnet 4.5 retires from the Claude API Nov 30, 2026; official replacement is claude-sonnet-5-5. Costs MORE than Sonnet 5.5 ($2/$10) despite being the older generation — flagged oddity.",
+      "price": {
+        "input": 3.0,
+        "note": "Unchanged from Sonnet 4.5. Default model on claude.ai and Claude Cowork (Free/Pro). API ID claude-sonnet-4-6.",
+        "output": 15.0
+      },
+      "release": "2026-11-08",
+      "sources": [
+        "https://dev.to/paullovelace/claude-sonnet-46-is-here-1m-context-opus-level-coding-at-sonnet-prices-3odc",
+        "https://matrix.zhudong.net/en/anthropic.html"
+      ],
+      "strengths": [
+        "Vendor: most capable Sonnet model yet — full upgrade across coding, computer use, long-context reasoning, agent planning, knowledge work, design",
+        "1M-token context window in beta (up from 200K) plus context compaction in beta",
+        "Vendor-reported: users preferred it over Sonnet 4.5 and Opus 4.5 in early Claude Code testing — see scores below for the OSWorld figure (all Anthropic's own figures)."
+      ],
+      "tier": "balanced",
+      "scores": [
+        {
+          "label": "OSWorld",
+          "value": "72.5%",
+          "source": "Anthropic",
+          "url": "https://dev.to/paullovelace/claude-sonnet-46-is-here-1m-context-opus-level-coding-at-sonnet-prices-3odc",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        }
+      ]
+    },
+    "Claude Sonnet 5.5": {
+      "avoid_for": [
+        "longest, hardest agent runs (Opus or Fable)",
+        "bulk classification and routing (Haiku)"
+      ],
+      "best_for": [
+        "everyday coding",
+        "writing and planning",
+        "routine code",
+        "general everyday work"
+      ],
+      "context_window": "1,000,000 tokens (128K max output)",
+      "lab": "Anthropic",
+      "notes": "Best value-for-capability ratio in the Claude family.",
+      "price": {
+        "input": 2.0,
+        "note": "Available on all Claude plans including Free.",
+        "output": 10.0
+      },
+      "release": "2026-09-28",
+      "sources": [
+        "https://app.woofocus.com/blog/best-claude-model",
+        "https://pandromeda.com/ai/claude-haiku-55-vs-sonnet-55-vs-opus-55-price-speed-uses",
+        "https://aicreatorhub.net/news/claude-opus-sonnet-haiku-5-5-which-to-use-india-2026"
+      ],
+      "strengths": [
+        "Vendor: the best combination of speed and intelligence",
+        "Strong independent standing near Opus at half the price.",
+        "Anthropic's own Terminal-Bench 4.0 figure — highest in the Claude family (vendor-reported) — see scores below.",
+        "30%+ faster than Sonnet 5, up to 30% lower cost for most work (vendor)"
+      ],
+      "tier": "balanced",
+      "scores": [
+        {
+          "label": "Terminal-Bench 4.0",
+          "value": "70.6%",
+          "source": "Anthropic",
+          "url": "https://aicreatorhub.net/news/claude-opus-sonnet-haiku-5-5-which-to-use-india-2026",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        }
+      ]
+    },
+    "DeepSeek V4 Pro 0813": {
+      "avoid_for": [
+        "new work — effectively superseded by V4.1 Flash, which DeepSeek serves behind its endpoint"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "1,000,000 tokens (up to 384K output)",
+      "lab": "DeepSeek",
+      "notes": "STATUS AMBIGUITY: DeepSeek said Sep 10 the endpoint would route to V4.1 Flash from Sep 14, then kept serving V4 Pro; pricing page still listed it Oct 29, 2026. Treat as superseded.",
+      "price": {
+        "input": 1.32,
+        "note": "Peak rates. Off-peak $0.66/$1.98. Same peak windows as Flash.",
+        "output": 3.96
+      },
+      "release": "2026-08-13",
+      "sources": [
+        "https://www.whatdoesaicost.com/guides/deepseek-v4-pro-v4-1-flash-explained/",
+        "https://benchlm.ai/deepseek/api-pricing"
+      ],
+      "strengths": [
+        "Three thinking-effort levels (low, high, max)",
+        "1M context, up to 384K output"
+      ],
+      "tier": "superseded flagship"
+    },
+    "DeepSeek V4.1 Flash 1017": {
+      "avoid_for": [
+        "peak-hour workloads where the price doubles",
+        "frontier reasoning (Flash-class, not Pro-class)"
+      ],
+      "best_for": [
+        "cheap, fast, high-volume work with vision input",
+        "off-peak workloads"
+      ],
+      "context_window": "1,000,000 tokens (up to 384K output)",
+      "lab": "DeepSeek",
+      "notes": "GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026 (tracker date). DeepSeek routed the deepseek-v4-pro endpoint to Flash from Sep 14, 2026. No independent index score found in this pass.",
+      "price": {
+        "input": 0.3,
+        "note": "Peak rates. Off-peak $0.15/$0.60. Peak hours 01:00-04:00 and 06:00-10:00 UTC, Mon-Fri excl. Chinese public holidays. Cache hits $0.006 peak / $0.003 off-peak.",
+        "output": 1.2
+      },
+      "release": "2026-10-17",
+      "sources": [
+        "https://www.whatdoesaicost.com/guides/deepseek-v4-pro-v4-1-flash-explained/",
+        "https://benchlm.ai/deepseek/api-pricing",
+        "https://apidog.com/blog/what-is-deepseek-v4-1-flash/"
+      ],
+      "strengths": [
+        "Vendor: 'comprehensively surpassed V4 Pro in performance, cost, speed, and total time'",
+        "552B parameters (8B active input, 16B active output), native vision, MIT-licensed weights",
+        "Vendor-reported DeepSWE lead over V4 Pro — see scores below.",
+        "Cheapest capable general model in this report off-peak"
+      ],
+      "tier": "fast volume",
+      "scores": [
+        {
+          "label": "DeepSWE v1.1",
+          "value": "74.2",
+          "source": "DeepSeek",
+          "url": "https://www.whatdoesaicost.com/guides/deepseek-v4-pro-v4-1-flash-explained/",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        }
+      ]
+    },
+    "GPT-6 Astra": {
+      "avoid_for": [
+        "routine work (5x Sol, 10x Terra on price)",
+        "security research prompts that trip its cyber-safety gating"
+      ],
+      "best_for": [
+        "hardest reasoning, coding, and professional work",
+        "deep research inside OpenAI tooling"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "Knowledge cutoff April 30, 2026. No GPT-6.1 Astra was launched (safety concerns in internal testing, per TechCrunch via secondary coverage).",
+      "price": {
+        "input": 10.0,
+        "note": "Short context (<=272K input). Long context: $20/$75. In ChatGPT as GPT-6 Pro (Pro/Business/Enterprise); Plus only in ChatGPT Work and Codex; not on Free/Go.",
+        "output": 50.0
+      },
+      "release": "2026-09-03",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://www.c-sharpcorner.com/article/what-is-gpt-6-astra-and-when-is-it-worth-using",
+        "https://stackwrite.com/blog/openai-api-pricing-2026/",
+        "https://benchlm.ai/openai/api-pricing"
+      ],
+      "strengths": [
+        "Vendor: 'Our most capable model for the most demanding work'",
+        "First OpenAI model rated 'Critical' for cybersecurity capability"
+      ],
+      "tier": "flagship"
+    },
+    "GPT-6 Cyber": {
+      "avoid_for": [
+        "all general use — Daybreak Red / approved organisations only"
+      ],
+      "best_for": [
+        "authorised vulnerability research only"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "Listed for completeness only. Do not recommend.",
+      "price": {
+        "input": 20.0,
+        "note": "Short context. Not generally available.",
+        "output": 100.0
+      },
+      "release": "2026-11-05",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://stackwrite.com/blog/openai-api-pricing-2026/"
+      ],
+      "strengths": [
+        "Vendor: trusted-access cyber model for authorised vulnerability research"
+      ],
+      "tier": "restricted"
+    },
+    "GPT-6 Luna": {
+      "avoid_for": [
+        "complex reasoning and long-horizon work"
+      ],
+      "best_for": [
+        "focused high-volume tasks",
+        "classification, extraction, bulk generation"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "No independent index score found for Luna in this pass. Knowledge cutoff May 18, 2026.",
+      "price": {
+        "input": 0.1,
+        "note": "Long context: $0.20/$0.75.",
+        "output": 0.5
+      },
+      "release": "2026-09-22",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://stackwrite.com/blog/openai-api-pricing-2026/"
+      ],
+      "strengths": [
+        "Vendor: 'Our most efficient model for focused, high-volume tasks'",
+        "Cheapest frontier-family model in this report"
+      ],
+      "tier": "fast volume"
+    },
+    "GPT-6 Sol": {
+      "avoid_for": [
+        "new work — replaced by GPT-6.1 Sol at the same price with cheaper cached input"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "Superseded one week after launch. Kept for freshness history.",
+      "price": {
+        "input": 2.0,
+        "note": "Cached input $0.20 (vs $0.10 on 6.1 Sol).",
+        "output": 10.0
+      },
+      "release": "2026-09-22",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://benchlm.ai/openai/api-pricing"
+      ],
+      "strengths": [],
+      "tier": "superseded"
+    },
+    "GPT-6.1 Sol": {
+      "avoid_for": [
+        "the very hardest problems (Astra)",
+        "cheapest high-volume jobs (Luna)"
+      ],
+      "best_for": [
+        "complex work where Astra is overkill",
+        "everyday coding in OpenAI tooling",
+        "professional work at a lower cost"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "Replaced GPT-6 Sol one week after it shipped, at the same price.",
+      "price": {
+        "input": 2.0,
+        "note": "Cached input $0.10 (halved from GPT-6 Sol). Long context: $4/$15.",
+        "output": 10.0
+      },
+      "release": "2026-09-29",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://stackwrite.com/blog/openai-api-pricing-2026/",
+        "https://www.robotmunki.com/blog/llm-landscape"
+      ],
+      "strengths": [
+        "Vendor: 'Near-Astra performance for complex work at a lower cost'",
+        "Best value at the frontier — roughly an eighth of Opus 5.5's cost per index task (secondary)"
+      ],
+      "tier": "balanced"
+    },
+    "GPT-6.1 Terra": {
+      "avoid_for": [
+        "deep reasoning and hardest engineering (Astra / 6.1 Sol)"
+      ],
+      "best_for": [
+        "writing and content",
+        "visual reasoning",
+        "computer use",
+        "fast general work"
+      ],
+      "context_window": "1,050,000 tokens (128K max output)",
+      "lab": "OpenAI",
+      "notes": "Newest general-purpose GPT-6.",
+      "price": {
+        "input": 1.0,
+        "note": "Long context: $2/$7.50.",
+        "output": 5.0
+      },
+      "release": "2026-10-26",
+      "sources": [
+        "https://blog.sandbase.ai/gpt-6-2-is-it-out-whats-confirmed-2026/",
+        "https://stackwrite.com/blog/openai-api-pricing-2026/"
+      ],
+      "strengths": [
+        "Vendor: 'A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing'",
+        "Latest knowledge cutoff in the GPT-6 family (June 1, 2026)"
+      ],
+      "tier": "fast general"
+    },
+    "Gemini 3 Pro": {
+      "avoid_for": [
+        "new work — superseded by the Gemini 4 family"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "unverified",
+      "lab": "Google",
+      "notes": "Superseded by Gemini 4. Kept on tracker for freshness history.",
+      "price": {
+        "input": null,
+        "note": "unpublished — current API pricing not re-verified in this pass, not guessed",
+        "output": null
+      },
+      "release": "2025-11-18",
+      "sources": [],
+      "strengths": [
+        "Prior flagship before Gemini 4"
+      ],
+      "tier": "previous generation"
+    },
+    "Gemini 3.1 Pro": {
+      "avoid_for": [
+        "new work — superseded by the Gemini 4 family"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "unverified",
+      "lab": "Google",
+      "notes": "Superseded by Gemini 4. Kept on tracker for freshness history.",
+      "price": {
+        "input": null,
+        "note": "unpublished — current API pricing not re-verified in this pass, not guessed",
+        "output": null
+      },
+      "release": "2026-02-19",
+      "sources": [],
+      "strengths": [
+        "Previous-generation flagship tier"
+      ],
+      "tier": "previous generation"
+    },
+    "Gemini 4 Argon": {
+      "avoid_for": [
+        "quick jobs (Hydrogen is faster and cheaper)",
+        "high-volume work after Dec 1, 2026 when the price doubles"
+      ],
+      "best_for": [
+        "complex development and long workflows",
+        "architecture and hard debugging",
+        "enterprise knowledge work",
+        "orchestrator planner role on Pro tier"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Google",
+      "notes": "SCORE DISAGREEMENT: the independent index scores Hydrogen above Argon and rates it faster and cheaper — yet Argon is the model Google positions for deeper reasoning. The index measures rapid problem-solving, not architectural judgment. Pick follows vendor intent.",
+      "price": {
+        "input": 2.0,
+        "note": "Introductory rate through Nov 30, 2026; $4.00/$20.00 from Dec 1, 2026. No free tier.",
+        "output": 10.0
+      },
+      "release": "2026-10-13",
+      "sources": [
+        "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4",
+        "https://blog.laozhang.ai/en/posts/gemini-4-argon-vs-claude-fable-5-2-vs-gpt-6-astra",
+        "https://www.digitalapplied.com/blog/gemini-4-carbon-public-access-pricing"
+      ],
+      "strengths": [
+        "Vendor: deep, long-horizon reasoning across software engineering, enterprise knowledge work, cybersecurity defense",
+        "Vendor guidance: suited to faster everyday engineering vs Carbon's deeper checking"
+      ],
+      "tier": "frontier",
+      "scores": [
+        {
+          "label": "LMArena Text Arena (results Nov 11, 2026)",
+          "value": "1522",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_text",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        },
+        {
+          "label": "LMArena Longer Queries Arena (results Nov 11, 2026)",
+          "value": "1544",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_text_longer",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        }
+      ]
+    },
+    "Gemini 4 Carbon": {
+      "avoid_for": [
+        "routine work (token and time burn)",
+        "high-volume work after Dec 1, 2026 when the price doubles"
+      ],
+      "best_for": [
+        "hardest engineering problems",
+        "planning and architecture",
+        "orchestrator planner role",
+        "deep reasoning with extended verification"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Google",
+      "notes": "Announced Oct 28, 2026 for Fairwind cyber defenders; GA Nov 10, 2026. Knowledge cutoff March 2026.",
+      "price": {
+        "input": 2.0,
+        "note": "Introductory rate through Nov 30, 2026; $4.00/$20.00 from Dec 1, 2026. Cached input $0.10 then $0.20. No free tier.",
+        "output": 10.0
+      },
+      "release": "2026-11-10",
+      "sources": [
+        "https://blog.haheng.au/en/gemini-4-carbon-goes-paid-2-10-until-november-30",
+        "https://www.eesel.ai/blog/gemini-4-carbon-review",
+        "https://metarix.io/gemini-4-carbon-pricing",
+        "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html"
+      ],
+      "strengths": [
+        "Top-tier Gemini 4 model; vendor: 'explore thoroughly, reason deeply, and run extended verification loops'",
+        "Google reports #1 on CursorBench 4.0 — see scores below.",
+        "MKA professional-task score — see scores below."
+      ],
+      "tier": "flagship",
+      "scores": [
+        {
+          "label": "CursorBench 4.0",
+          "value": "60.4% (#1)",
+          "source": "Google",
+          "url": "https://www.eesel.ai/blog/gemini-4-carbon-review",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        },
+        {
+          "label": "MKA professional-task (Climb-WSR)",
+          "value": "54.34%",
+          "source": "MKA benchmark",
+          "url": "https://help.apiyi.com/en/gemini-4-carbon-vs-claude-fable-5-2-vs-gpt-6-astra-en.html",
+          "date": "2026-11-13",
+          "kind": "independent"
+        },
+        {
+          "label": "LMArena Text Arena (results Nov 11, 2026)",
+          "value": "1526",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_text",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        },
+        {
+          "label": "LMArena Multi-turn Arena (results Nov 11, 2026)",
+          "value": "1564",
+          "source": "LMArena (via BenchLeader mirror)",
+          "url": "https://www.benchleader.com/benchmarks/lmarena_text_multiturn",
+          "date": "2026-11-13",
+          "kind": "independent — human preference (Elo votes), not task completion"
+        }
+      ]
+    },
+    "Gemini 4 Hydrogen": {
+      "avoid_for": [
+        "deepest architectural reasoning and hardest planning (Argon/Carbon)",
+        "privacy/security-sensitive review (open question, community evidence only)"
+      ],
+      "best_for": [
+        "everyday coding",
+        "bug fixes and tests",
+        "repeated tool calls",
+        "agent workflows",
+        "orchestrator executor role"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Google",
+      "notes": "No knowledge cutoff published by Google for Hydrogen.",
+      "price": {
+        "input": 1.5,
+        "note": "Flat rate, no introductory period and no announced increase. Free tier available. Twice Flash's price until Dec 31, 2026; Flash rises to the same price Jan 1, 2027.",
+        "output": 7.5
+      },
+      "release": "2026-11-12",
+      "sources": [
+        "https://kingy.ai/news/google-gemini-4-hydrogen-launch/",
+        "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4",
+        "https://www.michaelleung.info/latest-news/gemini-4-hydrogen-price-benchmarks-element-names",
+        "https://top5apps.ai/news/what-is-gemini-4-hydrogen-price-benchmarks-free-access-vs-claude-sonnet-5-5-gpt-6-1-terra/"
+      ],
+      "strengths": [
+        "Vendor: fast, efficient Gemini 4 for everyday coding and agent work; successor to Gemini 3.8 Flash",
+        "Only Gemini 4 model with a free API tier and the only one shipped to Search users worldwide",
+        "Google model card reports a Terminal-Bench 4.1 result — see scores below."
+      ],
+      "tier": "fast execution",
+      "scores": [
+        {
+          "label": "Terminal-Bench 4.1",
+          "value": "57.0%",
+          "source": "Google",
+          "url": "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        }
+      ]
+    },
+    "Grok 4.6": {
+      "avoid_for": [
+        "new work — 4.7 beats it on every benchmark xAI publishes, at the same price"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "500,000 tokens",
+      "lab": "xAI",
+      "notes": "Superseded by Grok 4.7. Kept for freshness history.",
+      "price": {
+        "input": 2.0,
+        "note": "Below 200K prompt tokens; $4.00/$12.00 at 200K and above.",
+        "output": 6.0
+      },
+      "release": "2026-08-12",
+      "sources": [
+        "https://vanja.io/grok-4-7/",
+        "https://aq.dev/guides/grok-4-7-for-coding-agents/"
+      ],
+      "strengths": [
+        "Same price and context as 4.7"
+      ],
+      "tier": "superseded"
+    },
+    "Grok 4.7": {
+      "avoid_for": [
+        "terminal-heavy multi-hour work (Fable 5.1 scores well above Grok on xAI's own table)",
+        "long-context prompts over 200K tokens (price doubles)"
+      ],
+      "best_for": [
+        "long multi-step coding work, especially in Cursor/Grok Build",
+        "electrical engineering (EEBench)",
+        "legal-agent work (Harvey)"
+      ],
+      "context_window": "500,000 tokens (no text output limit)",
+      "lab": "xAI",
+      "notes": "SCORE DISAGREEMENT: independent standing reported inconsistently across readings and below the median of comparable models. Treat independent standing as unverified; vendor positioning is stronger than its independent scores. Uses roughly twice the median output tokens per index task, so low list price does not mean low per-task cost.",
+      "price": {
+        "input": 2.0,
+        "note": "Below 200K prompt tokens. $4.00/$12.00 at 200K and above, applied to every token in the request. Cached input $0.50 ($1.00 long-context).",
+        "output": 6.0
+      },
+      "release": "2026-09-21",
+      "sources": [
+        "https://vanja.io/grok-4-7/",
+        "https://aq.dev/guides/grok-4-7-for-coding-agents/",
+        "https://tess.im/en/blog/grok-4-7-where-it-lands"
+      ],
+      "strengths": [
+        "Vendor: larger base model, longer RL run; long-horizon coding with edge-case handling, persistence, self-checking",
+        "Supplemental training on anonymised Cursor workflow data (vendor)",
+        "Vendor-reported benchmark results — see scores below.",
+        "Fast variant at 2x price in Cursor/Grok Build only"
+      ],
+      "tier": "flagship",
+      "scores": [
+        {
+          "label": "CursorBench 4.0 (xhigh)",
+          "value": "46.3%",
+          "source": "xAI",
+          "url": "https://vanja.io/grok-4-7/",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        },
+        {
+          "label": "Terminal-Bench 4.0 (xhigh)",
+          "value": "38.0%",
+          "source": "xAI",
+          "url": "https://vanja.io/grok-4-7/",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        },
+        {
+          "label": "DeepSWE v1.1 (high)",
+          "value": "71.0%",
+          "source": "xAI",
+          "url": "https://vanja.io/grok-4-7/",
+          "date": "2026-11-13",
+          "kind": "vendor-reported"
+        }
+      ]
+    },
+    "Llama 4 Maverick": {
+      "avoid_for": [
+        "new recommendations — Meta now calls it its 'previous model'"
+      ],
+      "best_for": [
+        "general assistant use, coding, visual reasoning (at launch positioning)",
+        "open-weight deployments"
+      ],
+      "context_window": "1,000,000 tokens",
+      "lab": "Meta",
+      "notes": "Llama 4 Community License (not OSI open source). Kept for freshness history.",
+      "price": {
+        "input": null,
+        "note": "unpublished — Meta does not sell Llama 4 through its own paid API; hosted rates vary by provider",
+        "output": null
+      },
+      "release": "2025-04-05",
+      "sources": [
+        "https://benchr.org/articles/llama-4-review",
+        "https://airmore.ai/ai-review/llama-4-review"
+      ],
+      "strengths": [
+        "Vendor: strongest open chat-and-reasoning model at launch; 17B active / 400B total MoE, 1M context",
+        "MMLU Pro 80.5 (vendor-reported)"
+      ],
+      "tier": "open-weight generalist"
+    },
+    "Llama 4 Scout": {
+      "avoid_for": [
+        "new recommendations — oldest model on the tracker; superseded across the board"
+      ],
+      "best_for": [
+        "very-long-context evaluation and retrieval",
+        "multimodal apps on a single-H100 budget (Int4)"
+      ],
+      "context_window": "10,000,000 tokens (vendor claim)",
+      "lab": "Meta",
+      "notes": "Llama 4 Community License (not OSI open source; 700M MAU gate). Kept for freshness history.",
+      "price": {
+        "input": null,
+        "note": "unpublished — Meta does not sell Llama 4 through its own paid API; hosted rates vary by provider",
+        "output": null
+      },
+      "release": "2025-04-05",
+      "sources": [
+        "https://benchr.org/articles/llama-4-review",
+        "https://airmore.ai/ai-review/llama-4-review"
+      ],
+      "strengths": [
+        "Vendor: long-context variant, 10M-token context (vendor claim), 17B active / 109B total MoE",
+        "Open weights; fits on a single H100 at Int4 (vendor)"
+      ],
+      "tier": "open-weight long-context"
+    },
+    "Mistral Large 4": {
+      "avoid_for": [
+        "work needing a permissive open licence for Model-as-a-Service (Ecosystem Open-Weight License needs separate commercial permission)"
+      ],
+      "best_for": [
+        "hard reasoning",
+        "coding and agent work at a low price"
+      ],
+      "context_window": "1,000,000 tokens",
+      "lab": "Mistral",
+      "notes": "Public preview Oct 6, 2026; weights Oct 29; GA Nov 5, 2026. Replaces Large 3 and Medium 3.5 (deprecated Oct 31, 2026, retiring Apr 30, 2027).",
+      "price": {
+        "input": 0.7,
+        "note": "Current rate (checked late Oct / early Nov 2026). Launched at a two-week 50%-off sale ($0.68/$2.09); pre-sale list was $1.36/$4.18 — guides quoting the higher figure read the old rate card.",
+        "output": 2.1
+      },
+      "release": "2026-10-06",
+      "sources": [
+        "https://flatkey.ai/blog/mistral-api-pricing",
+        "https://www.maximem.ai/blog/mistral-api-pricing-2026",
+        "https://aipricecompare.org/api/mistral-api-pricing.html"
+      ],
+      "strengths": [
+        "Vendor: flagship for hard reasoning, coding, agents",
+        "1.05T MoE (52B active), 1M context, open-weight",
+        "Cheapest frontier-class model in this report"
+      ],
+      "tier": "flagship"
+    },
+    "Mistral Medium 3.5": {
+      "avoid_for": [
+        "new work — deprecated Oct 31, 2026 in favour of Large 4, which is cheaper and stronger"
+      ],
+      "best_for": [
+        "legacy use only"
+      ],
+      "context_window": "256,000 tokens",
+      "lab": "Mistral",
+      "notes": "Month-level release date (April 2026, v26.04). Deprecated Oct 31, 2026, retiring Apr 30, 2027.",
+      "price": {
+        "input": 1.5,
+        "note": "Costs MORE than Large 4 ($0.70/$2.10) while being older and smaller — flagged oddity.",
+        "output": 7.5
+      },
+      "release": "2026-04",
+      "sources": [
+        "https://flatkey.ai/blog/mistral-api-pricing",
+        "https://benchlm.ai/mistral/api-pricing",
+        "https://aipricecompare.org/api/mistral-api-pricing.html"
+      ],
+      "strengths": [
+        "128B dense model, open weights under a modified MIT licence",
+        "Vendor described it as optimised for agentic and coding use"
+      ],
+      "tier": "superseded"
+    },
+    "Mistral Small 4": {
+      "avoid_for": [
+        "frontier reasoning and long-context work (256K cap, small model)"
+      ],
+      "best_for": [
+        "high-volume chat, extraction, JSON-structured work on a budget"
+      ],
+      "context_window": "256,000 tokens",
+      "lab": "Mistral",
+      "notes": "Month-level release date (March 2026, v26.03). Mistral's volume tier.",
+      "price": {
+        "input": 0.15,
+        "note": "Cached input $0.015. Batch API 50% off.",
+        "output": 0.6
+      },
+      "release": "2026-03",
+      "sources": [
+        "https://flatkey.ai/blog/mistral-api-pricing",
+        "https://benchlm.ai/mistral/api-pricing"
+      ],
+      "strengths": [
+        "Vendor: single hybrid model covering instruct, reasoning, and coding at budget rates",
+        "Open weights, Apache 2.0"
+      ],
+      "tier": "budget volume"
+    },
+    "Muse Ember": {
+      "avoid_for": [
+        "flagship reasoning and planning (Wonder)",
+        "long-context prompts over 200K tokens (price triples)"
+      ],
+      "best_for": [
+        "repeated agent subtasks: tool calls, coding subtasks, routing, extraction, long-document reading"
+      ],
+      "context_window": "1,048,576 tokens (up to 512K output)",
+      "lab": "Meta",
+      "notes": "API id muse-ember-1.0.",
+      "price": {
+        "input": 0.1,
+        "note": "$0.10/$0.50 up to 200K input tokens; $0.30/$1.50 above. Only Muse API model with a long-context surcharge.",
+        "output": 0.5
+      },
+      "release": "2026-11-09",
+      "sources": [
+        "https://personalagentbench.com/is-meta-muse-open-source/",
+        "https://thedigitalgal.com/muse-models-explained/",
+        "https://www.productbuilder.net/companies/meta"
+      ],
+      "strengths": [
+        "Vendor: smallest Muse model, built for the tool calls, coding subtasks, routing, extraction and long-document reading an agent repeats",
+        "First model Meta trained using Muse Wonder Full as the teacher (vendor)"
+      ],
+      "tier": "small execution"
+    },
+    "Muse Glimmer 30B": {
+      "avoid_for": [
+        "frontier work (30B model, 131K context, 16K max output)"
+      ],
+      "best_for": [
+        "local and consumer-hardware deployment",
+        "small-device work (Muse Gadgets kit)"
+      ],
+      "context_window": "131,072 tokens (16K max output)",
+      "lab": "Meta",
+      "notes": "Distilled from Muse Spark. Separate model, not the one Meta says the Muse agent runs on.",
+      "price": {
+        "input": 0.3,
+        "note": "Secondary-sourced (OpenRouter catalog) hosted price.",
+        "output": 1.2
+      },
+      "release": "2026-08-10",
+      "sources": [
+        "https://personalagentbench.com/is-meta-muse-open-source/",
+        "https://thedigitalgal.com/muse-models-explained/",
+        "https://theworldofai.org/ai-ecosystem/technology-and-core-infrastructure/0d649da1/"
+      ],
+      "strengths": [
+        "Vendor: open-weight model distilled from Muse Spark, built to run on your own hardware",
+        "Apache 2.0, ungated — the only truly open-licence model in the Muse family"
+      ],
+      "tier": "small open-weight"
+    },
+    "Muse Spark": {
+      "avoid_for": [
+        "new work — superseded by Wonder at the top and Spark 1.3 for scale"
+      ],
+      "best_for": [
+        "legacy use inside Meta's stack"
+      ],
+      "context_window": "unverified",
+      "lab": "Meta",
+      "notes": "Later point releases (1.1, 1.2, 1.3) carry their own pricing.",
+      "price": {
+        "input": null,
+        "note": "unpublished — API price not verified in this pass, not guessed",
+        "output": null
+      },
+      "release": "2026-04-08",
+      "sources": [
+        "https://thedigitalgal.com/muse-models-explained/"
+      ],
+      "strengths": [
+        "Vendor: first model from Meta Superintelligence Labs; the model the Muse agent launched on"
+      ],
+      "tier": "base"
+    },
+    "Muse Spark 1.3": {
+      "avoid_for": [
+        "flagship reasoning (Wonder)"
+      ],
+      "best_for": [
+        "high-volume agentic and coding work inside Meta's stack"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Meta",
+      "notes": "Price flagged secondary-sourced until confirmed against Meta's own list.",
+      "price": {
+        "input": 0.1,
+        "note": "Secondary-sourced (OpenRouter catalog). If verified against Meta's own price list it would be one of the best value agent models available.",
+        "output": 0.2
+      },
+      "release": "2026-09-02",
+      "sources": [
+        "https://theworldofai.org/ai-ecosystem/technology-and-core-infrastructure/0d649da1/",
+        "https://www.productbuilder.net/companies/meta"
+      ],
+      "strengths": [
+        "Vendor: agentic and coding model at scale",
+        "1.05M context"
+      ],
+      "tier": "agentic scale"
+    },
+    "Muse Spark Open": {
+      "avoid_for": [
+        "use cases needing an OSI open-source licence (Muse Model License, not open source)"
+      ],
+      "best_for": [
+        "Spark-class capability with weights to inspect and self-host"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Meta",
+      "notes": "Muse Model License is not an open-source licence.",
+      "price": {
+        "input": 1.25,
+        "note": "Secondary-sourced (OpenRouter catalog). Weights on Hugging Face, gated with manual approval.",
+        "output": 4.25
+      },
+      "release": "2026-10-15",
+      "sources": [
+        "https://personalagentbench.com/is-meta-muse-open-source/",
+        "https://theworldofai.org/ai-ecosystem/technology-and-core-infrastructure/0d649da1/"
+      ],
+      "strengths": [
+        "Vendor: open-weight version of Muse Spark; 816B total MoE, 42B active, 1M context",
+        "Strongest US open-weight model at launch (secondary coverage)"
+      ],
+      "tier": "open-weight flagship"
+    },
+    "Muse Wonder": {
+      "avoid_for": [
+        "anything needing open weights (none published)",
+        "general use where Spark 1.3 or Ember is cheaper"
+      ],
+      "best_for": [
+        "frontier agent work inside Meta's stack (Meta Model API, Muse Code)"
+      ],
+      "context_window": "1,048,576 tokens",
+      "lab": "Meta",
+      "notes": "Wonder Full is reserved for Muse Code subscribers and is not on the API. No independent index score found — do not rank against Fable/Carbon on scores.",
+      "price": {
+        "input": 4.0,
+        "note": "Secondary-sourced (OpenRouter catalog via secondary coverage); Meta's own API price list not directly verified in this pass.",
+        "output": 20.0
+      },
+      "release": "2026-10-12",
+      "sources": [
+        "https://personalagentbench.com/is-meta-muse-open-source/",
+        "https://thedigitalgal.com/muse-models-explained/",
+        "https://theworldofai.org/ai-ecosystem/technology-and-core-infrastructure/0d649da1/"
+      ],
+      "strengths": [
+        "Vendor: Meta's most capable models to date, frontier models for agents, built on the groundwork laid with Spark"
+      ],
+      "tier": "flagship"
+    }
+  },
+  "unverified": [
+    "Muse Wonder independent standing: no independent index score found in this pass.",
+    "Muse Spark 1.3 ($0.10/$0.20) and Muse Spark Open ($1.25/$4.25) prices: secondary-sourced (OpenRouter catalog), not Meta's own price list.",
+    "Muse Spark (base, Apr 8, 2026) API price: not verified, marked unpublished.",
+    "Gemini 3 Pro / Gemini 3.1 Pro current pricing: not re-verified, marked unpublished.",
+    "Grok 4.7 independent standing: Artificial Analysis figures are not republished in this tracker (licensing); independent standing was reported inconsistently across readings — treat as unverified.",
+    "DeepSeek V4 Pro live status: DeepSeek said the endpoint would route to V4.1 Flash from Sep 14, 2026, then kept serving V4 Pro; pricing page still listed it Oct 29, 2026.",
+    "DeepSeek V4.1 Flash release date: GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026 (tracker date). Both recorded.",
+    "Orchestrator benchmark version: Google's DeepMind post says Terminal-Bench 4.0, the Antigravity blog says 4.1, for the same 24%/19% figures.",
+    "Writing quality and data analysis categories: no dedicated public benchmark found; picks follow vendor positioning plus adjacent subtest evidence.",
+    "GPT-6 Luna independent index score: none found in this pass.",
+    "Manual orchestration patterns for Claude/OpenAI (plan with flagship, execute with cheaper tier): workflow inference, not a vendor feature.",
+    "Artificial Analysis Intelligence Index figures were consulted during research (Nov 13, 2026) but are not republished in the tracker; see the scores policy in the method note above."
+  ]
+}

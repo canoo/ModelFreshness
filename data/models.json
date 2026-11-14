@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-11-11",
+  "updated_at": "2026-11-13",
+  "bands": {
+    "fresh": {
+      "max_days": 14,
+      "label": "FRESH"
+    },
+    "warm": {
+      "max_days": 60,
+      "label": "WARM"
+    },
+    "cooling": {
+      "max_days": 180,
+      "label": "COOLING"
+    },
+    "stale": {
+      "max_days": null,
+      "label": "STALE"
+    }
+  },
+  "labs": [
+    {
+      "company": "Anthropic",
+      "models": [
+        {
+          "name": "Fable 5.2",
+          "release": "2026-11-09",
+          "source": "models.dev",
+          "models_dev_id": "claude-fable-5-2"
+        },
+        {
+          "name": "Sonnet 4.6",
+          "release": "2026-11-08",
+          "source": "models.dev",
+          "models_dev_id": "claude-sonnet-4-6"
+        },
+        {
+          "name": "Haiku 5.5",
+          "release": "2026-10-07",
+          "source": "models.dev",
+          "models_dev_id": "claude-haiku-5-5"
+        },
+        {
+          "name": "Sonnet 5.5",
+          "release": "2026-09-28",
+          "source": "models.dev",
+          "models_dev_id": "claude-sonnet-5-5"
+        },
+        {
+          "name": "Opus 5.5",
+          "release": "2026-09-22",
+          "source": "models.dev",
+          "models_dev_id": "claude-opus-5-5"
+        }
+      ]
+    },
+    {
+      "company": "OpenAI",
+      "models": [
+        {
+          "name": "Cyber",
+          "release": "2026-11-05",
+          "source": "manual"
+        },
+        {
+          "name": "6.1 Terra",
+          "release": "2026-10-26",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.1-terra"
+        },
+        {
+          "name": "6.1 Sol",
+          "release": "2026-09-29",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.1-sol"
+        },
+        {
+          "name": "Sol",
+          "release": "2026-09-22",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6-sol"
+        },
+        {
+          "name": "Luna",
+          "release": "2026-09-22",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6-luna"
+        },
+        {
+          "name": "GPT-6 Astra",
+          "release": "2026-09-03",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6-astra"
+        }
+      ]
+    },
+    {
+      "company": "Google",
+      "models": [
+        {
+          "name": "Gemini 4 Hydrogen",
+          "release": "2026-11-12",
+          "source": "models.dev",
+          "models_dev_id": "gemini-4-hydrogen",
+          "note": "Fast, low-cost tier; replaces Gemini 3.8 Flash"
+        },
+        {
+          "name": "Gemini 4 Carbon",
+          "release": "2026-11-10",
+          "source": "models.dev",
+          "models_dev_id": "gemini-4-carbon",
+          "note": "Frontier reasoning model; GA Nov 10, announced Oct 28"
+        },
+        {
+          "name": "Gemini 4 Argon",
+          "release": "2026-10-13",
+          "source": "models.dev",
+          "models_dev_id": "gemini-4-argon"
+        },
+        {
+          "name": "Gemini 3.1 Pro",
+          "release": "2026-02-19",
+          "source": "models.dev",
+          "models_dev_id": "gemini-3.1-pro-preview"
+        },
+        {
+          "name": "Gemini 3 Pro",
+          "release": "2025-11-18",
+          "source": "manual"
+        }
+      ]
+    },
+    {
+      "company": "xAI",
+      "models": [
+        {
+          "name": "Grok 4.7",
+          "release": "2026-09-21",
+          "source": "models.dev",
+          "models_dev_id": "grok-4.7"
+        },
+        {
+          "name": "Grok 4.6",
+          "release": "2026-08-12",
+          "source": "models.dev",
+          "models_dev_id": "grok-4.6"
+        }
+      ]
+    },
+    {
+      "company": "Meta",
+      "models": [
+        {
+          "name": "Muse Ember",
+          "release": "2026-11-09",
+          "source": "models.dev",
+          "models_dev_id": "muse-ember-1.0"
+        },
+        {
+          "name": "Muse Spark Open",
+          "release": "2026-10-15",
+          "source": "manual"
+        },
+        {
+          "name": "Muse Wonder",
+          "release": "2026-10-12",
+          "source": "models.dev",
+          "models_dev_id": "muse-wonder-1.0"
+        },
+        {
+          "name": "Muse Spark 1.3",
+          "release": "2026-09-02",
+          "source": "models.dev",
+          "models_dev_id": "muse-spark-1.3"
+        },
+        {
+          "name": "Muse Glimmer",
+          "release": "2026-08-10",
+          "source": "manual"
+        },
+        {
+          "name": "Muse Spark",
+          "release": "2026-04-08",
+          "source": "models.dev",
+          "models_dev_id": "muse-spark-1.1"
+        },
+        {
+          "name": "Llama 4 Scout",
+          "release": "2025-04-05",
+          "source": "manual"
+        },
+        {
+          "name": "Llama 4 Maverick",
+          "release": "2025-04-05",
+          "source": "manual"
+        }
+      ]
+    },
+    {
+      "company": "DeepSeek",
+      "models": [
+        {
+          "name": "V4.1 Flash 1017",
+          "release": "2026-10-17",
+          "source": "models.dev",
+          "models_dev_id": "deepseek-flash"
+        },
+        {
+          "name": "V4 Pro 0813",
+          "release": "2026-08-13",
+          "source": "models.dev",
+          "models_dev_id": "deepseek-v4-pro"
+        }
+      ]
+    },
+    {
+      "company": "Mistral",
+      "models": [
+        {
+          "name": "Large 4",
+          "release": "2026-10-06",
+          "source": "models.dev",
+          "models_dev_id": "mistral-large-4",
+          "note": "preview Oct 6, weights Oct 29"
+        },
+        {
+          "name": "Medium 3.5",
+          "release": "2026-04",
+          "source": "models.dev",
+          "models_dev_id": "mistral-medium-2604",
+          "note": "month-level, approximate"
+        },
+        {
+          "name": "Small 4",
+          "release": "2026-03",
+          "source": "models.dev",
+          "models_dev_id": "mistral-small-2603",
+          "note": "month-level, approximate"
+        }
+      ]
+    }
+  ],
+  "prompt_section": {
+    "attribution": "Anthropic's Alex Albert — every time a new model drops, run this on all your projects.",
+    "prompt": "Read this entire project and find everything that's broken, inconsistent, inefficient, or no longer needed. Fix what you're sure about and list the rest for me to review.",
+    "safety_notes": [
+      "Start a new branch or commit first so you can roll back.",
+      "If the project has no tests, do a list-only pass first — no code changes.",
+      "Watch usage allowance: Fable 5.2 burns allowance fast (Pro users up to 50% of weekly allowance until Nov 17, 15:59)."
+    ],
+    "split": "Split the work into sure (the model fixes it) vs uncertain (listed for the human to decide) — like a cleaner throwing out obvious rubbish but putting uncertain drawer items on the table.",
+    "title": "The new-model health check"
+  },
+  "footer": "Checked Nov 11, 2026 — dates frozen at build time. Sources: models.dev, Artificial Analysis, Evertune's AI Model Release Tracker."
+}

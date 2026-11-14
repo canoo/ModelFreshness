@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Freshness Tracker</title>
+<style>
+  :root {
+    --ink: #111;
+    --paper: #fafaf7;
+    --line: #111;
+    --fresh: #15803d;
+    --warm: #b45309;
+    --cooling: #c2410c;
+    --stale: #b91c1c;
+    --muted: #555;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
+
+  header { border-bottom: 4px solid var(--line); padding-bottom: 32px; margin-bottom: 48px; }
+  header .kicker {
+    font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.02; letter-spacing: -0.02em; font-weight: 800; }
+  header p { margin-top: 20px; font-size: 19px; max-width: 560px; color: #333; }
+
+  .summary { display: flex; flex-wrap: wrap; gap: 0; border: 3px solid var(--line); margin-bottom: 56px; }
+  .summary .cell { flex: 1 1 120px; padding: 20px 16px; border-right: 3px solid var(--line); }
+  .summary .cell:last-child { border-right: none; }
+  .summary .num { font-size: 40px; font-weight: 800; line-height: 1; }
+  .summary .lab { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-top: 8px; }
+  .summary .cell.fresh .num, .summary .cell.fresh .lab { color: var(--fresh); }
+  .summary .cell.warm .num, .summary .cell.warm .lab { color: var(--warm); }
+  .summary .cell.cooling .num, .summary .cell.cooling .lab { color: var(--cooling); }
+  .summary .cell.stale .num, .summary .cell.stale .lab { color: var(--stale); }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+  .filters button {
+    font: inherit; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    background: #fff; color: var(--ink); border: 2px solid var(--line);
+    padding: 10px 18px; cursor: pointer; border-radius: 0;
+  }
+  .filters button:hover { background: var(--ink); color: #fff; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+  section.lab { margin-bottom: 56px; }
+  section.lab h2 {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.01em;
+    padding-bottom: 12px; border-bottom: 3px solid var(--line); margin-bottom: 0;
+  }
+  section.lab h2 span { float: right; font-size: 14px; font-weight: 700; color: var(--muted); letter-spacing: .08em; padding-top: 10px; }
+
+  .model {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 8px 24px; align-items: baseline;
+    padding: 18px 4px; border-bottom: 1px solid #ccc;
+  }
+  .model .name { font-size: 20px; font-weight: 700; }
+  .model .name .note { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
+  .model .date { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15px; color: #333; text-align: right; }
+  .model .age { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15px; text-align: right; min-width: 96px; }
+  .model .band {
+    grid-column: 1 / -1; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .model[data-band="fresh"] .band, .model[data-band="fresh"] .age { color: var(--fresh); }
+  .model[data-band="warm"] .band, .model[data-band="warm"] .age { color: var(--warm); }
+  .model[data-band="cooling"] .band, .model[data-band="cooling"] .age { color: var(--cooling); }
+  .model[data-band="stale"] .band, .model[data-band="stale"] .age { color: var(--stale); }
+  .model[data-band="stale"] .name { color: #444; }
+  .model.hidden { display: none; }
+
+  /* "Which model for what" guide */
+  .guide { margin: 72px 0 56px; }
+  .guide > h2 {
+    font-size: 30px; font-weight: 800; letter-spacing: -0.01em;
+    padding-bottom: 12px; border-bottom: 4px solid var(--line); margin-bottom: 16px;
+  }
+  .guide .method { font-size: 16px; color: #333; max-width: 680px; margin-bottom: 40px; }
+  .cat { border: 3px solid var(--line); background: #fff; padding: 28px 28px 24px; margin-bottom: 28px; }
+  .cat h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+  .cat .pick { font-size: 17px; margin-bottom: 6px; }
+  .cat .reason { color: #333; margin-bottom: 12px; }
+  .cat .alt { margin: 12px 0 0 20px; }
+  .cat .alt li { margin-bottom: 8px; }
+  .cat .catnote { margin-top: 12px; font-size: 15px; color: var(--muted); }
+  .src { font-size: 13px; color: var(--muted); }
+  .src a { color: var(--muted); }
+  .sub-title { font-size: 24px; font-weight: 800; margin: 48px 0 8px; }
+  .sub-intro { font-size: 16px; color: #333; max-width: 680px; margin-bottom: 24px; }
+  .sub h4 { font-size: 19px; font-weight: 800; margin: 28px 0 4px; }
+  .sub .subhead { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+  .sub table { width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 15px; }
+  .sub .table-wrap { overflow-x: auto; margin-bottom: 8px; }
+  .sub .table-wrap table { margin-bottom: 0; }
+  .sub th, .sub td { text-align: left; vertical-align: top; padding: 10px 12px; border: 1px solid #999; }
+  .sub th { background: var(--ink); color: #fff; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .sub td:first-child { font-weight: 700; white-space: nowrap; }
+  .unver { border: 3px solid var(--stale); padding: 24px 28px; margin-top: 48px; background: #fff; }
+  .unver h3 { font-size: 20px; font-weight: 800; color: var(--stale); margin-bottom: 12px; }
+  .unver ul { margin-left: 20px; }
+  .unver li { margin-bottom: 8px; }
+  .unver .tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; color: var(--stale); border: 1px solid var(--stale); padding: 1px 6px; margin-right: 8px; white-space: nowrap; }
+
+  .notes { grid-column: 1 / -1; border-top: 1px dashed #999; padding-top: 12px; margin-top: 4px; font-size: 15px; }
+  .notes summary { cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .notes summary:hover { color: var(--ink); }
+  .notes dl { margin-top: 12px; }
+  .notes dt { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+  .notes dd { margin: 2px 0 0 0; color: #333; }
+  .notes .note-line { margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .notes .unverified-flag { color: var(--stale); font-weight: 700; }
+  .notes .scores { list-style: none; margin: 2px 0 0 0; }
+  .notes .scores li { margin-bottom: 6px; }
+  .notes .scores a { color: var(--ink); }
+  .notes .scores .kind { color: var(--muted); font-size: 13px; }
+
+  .prompt-card { border: 3px solid var(--line); padding: 36px 32px; margin: 72px 0 56px; background: #fff; }
+  .prompt-card .kicker { font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .prompt-card h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .prompt-card blockquote {
+    font-size: 21px; line-height: 1.5; font-weight: 600;
+    border-left: 5px solid var(--fresh); padding-left: 20px; margin: 20px 0;
+  }
+  .prompt-card .split { margin: 20px 0; }
+  .prompt-card .split strong { display: block; margin-bottom: 4px; }
+  .prompt-card ul { margin: 16px 0 0 20px; }
+  .prompt-card li { margin-bottom: 8px; }
+  .prompt-card .attr { font-size: 14px; color: var(--muted); margin-top: 20px; }
+  .copy-btn {
+    font: inherit; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    background: var(--ink); color: #fff; border: 2px solid var(--line);
+    padding: 12px 22px; cursor: pointer; margin-top: 24px; border-radius: 0;
+  }
+  .copy-btn:hover { background: var(--fresh); border-color: var(--fresh); }
+
+  footer { border-top: 4px solid var(--line); padding-top: 28px; font-size: 15px; color: #333; }
+  footer .status { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; margin-bottom: 12px; }
+  .light { width: 14px; height: 14px; border-radius: 50%; background: #999; flex: none; }
+  .light.on { background: var(--fresh); box-shadow: 0 0 12px 3px rgba(21, 128, 61, .55); }
+  .light.dim { background: var(--stale); box-shadow: none; opacity: .55; }
+  footer p { margin-bottom: 8px; }
+  footer a { color: var(--ink); }
+
+  .loading, .error { padding: 80px 0; font-size: 20px; }
+  .error { color: var(--stale); font-weight: 700; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 40px 18px 72px; }
+    .model { grid-template-columns: 1fr auto; }
+    .model .age { grid-column: 2; grid-row: 1; }
+    .model .date { grid-column: 1 / -1; text-align: left; }
+    .summary .cell { flex-basis: 50%; border-bottom: 3px solid var(--line); }
+    .summary .cell:nth-child(2n) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Model Freshness Tracker</div>
+    <h1>How fresh<br>are the models?</h1>
+    <p>Days since release, per lab. Fresh models are green. The older they get, the redder they turn.</p>
+  </header>
+
+  <div id="app"><p class="loading">Loading model data…</p></div>
+
+  <footer id="footer" hidden>
+    <div class="status"><span class="light" id="status-light"></span><span id="status-text"></span></div>
+    <p id="footer-note"></p>
+    <p id="footer-meta"></p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var BANDS = [
+    { key: 'fresh',   label: 'Fresh',   max: 14 },
+    { key: 'warm',    label: 'Warm',    max: 60 },
+    { key: 'cooling', label: 'Cooling', max: 180 },
+    { key: 'stale',   label: 'Stale',   max: Infinity }
+  ];
+
+  function parseRelease(r) {
+    // "2026-11-10" -> date; "2026-04" (month-level) -> 1st of the month, approximate.
+    var approx = /^\d{4}-\d{2}$/.test(r);
+    return { date: new Date((approx ? r + '-01' : r) + 'T00:00:00Z'), approx: approx };
+  }
+  function daysSince(date) {
+    var now = new Date(); now.setUTCHours(0, 0, 0, 0);
+    return Math.max(0, Math.round((now - date) / 86400000));
+  }
+  function bandFor(days) {
+    for (var i = 0; i < BANDS.length; i++) if (days <= BANDS[i].max) return BANDS[i];
+    return BANDS[3];
+  }
+  function fmtDate(r, approx) {
+    var d = parseRelease(r).date;
+    var s = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+    return approx ? s.replace(/ \d{1,2},/, '') + ' (approx)' : s;
+  }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  // Every score on the page carries its source name + link + date.
+  // The citation date is the research date in model-notes.json (meta.dated).
+  var CITE_DATE = '';
+  function fmtCiteDate(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return '';
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10) + ', ' + m[1];
+  }
+
+  function srcLinks(sources, inline) {
+    var p = el('p', 'src');
+    if (!sources || !sources.length) {
+      p.appendChild(el('span', 'unverified-flag', 'Sources: none listed — unverified'));
+      return p;
+    }
+    p.appendChild(document.createTextNode('Sources: '));
+    sources.forEach(function (u, i) {
+      if (i > 0) p.appendChild(document.createTextNode(' · '));
+      var a = document.createElement('a');
+      a.href = u;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      try { a.textContent = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { a.textContent = u; }
+      p.appendChild(a);
+    });
+    if (CITE_DATE) p.appendChild(document.createTextNode(' · Checked ' + CITE_DATE));
+    return p;
+  }
+
+  function normName(s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ''); }
+  // models.json uses short names ("Fable 5.2", "6.1 Sol"); the notes use full
+  // names ("Claude Fable 5.2", "GPT-6.1 Sol"). Match on exact, suffix, then prefix.
+  function matchNote(name, notes) {
+    if (!notes || !notes.models) return null;
+    var n = normName(name);
+    var keys = Object.keys(notes.models);
+    for (var i = 0; i < keys.length; i++) if (normName(keys[i]) === n) return notes.models[keys[i]];
+    for (var j = 0; j < keys.length; j++) {
+      var k = normName(keys[j]);
+      if (k.slice(-n.length) === n) return notes.models[keys[j]];
+    }
+    for (var m = 0; m < keys.length; m++) {
+      var k2 = normName(keys[m]);
+      if (k2.indexOf(n) === 0 || n.indexOf(k2) === 0) return notes.models[keys[m]];
+    }
+    return null;
+  }
+
+  function priceText(price) {
+    if (!price || price.input == null || price.output == null) {
+      return { text: 'Price: unpublished — unverified', unverified: true };
+    }
+    var t = 'Price: $' + price.input + ' in / $' + price.output + ' out per M tokens';
+    if (price.note) t += ' — ' + price.note;
+    return { text: t, unverified: false };
+  }
+
+  function buildModelNotes(note) {
+    var d = el('details', 'notes');
+    d.appendChild(el('summary', null, 'Notes'));
+    var dl = document.createElement('dl');
+    var dt1 = el('dt', null, 'Best for'); dl.appendChild(dt1);
+    dl.appendChild(el('dd', null, (note.best_for || []).join('; ') || '—'));
+    var dt2 = el('dt', null, 'Avoid for'); dl.appendChild(dt2);
+    dl.appendChild(el('dd', null, (note.avoid_for || []).join('; ') || '—'));
+    var dt3 = el('dt', null, 'Pricing / context'); dl.appendChild(dt3);
+    var pr = priceText(note.price);
+    var dd3 = el('dd', null, pr.text + (note.context_window ? ' · Context: ' + note.context_window : ''));
+    if (pr.unverified || note.context_window === 'unverified') dd3.classList.add('unverified-flag');
+    dl.appendChild(dd3);
+    var dt4 = el('dt', null, 'Strengths'); dl.appendChild(dt4);
+    dl.appendChild(el('dd', null, (note.strengths || []).join('; ') || '—'));
+    if (note.scores && note.scores.length) {
+      var dt5 = el('dt', null, 'Scores — cited individually'); dl.appendChild(dt5);
+      var dd5 = document.createElement('dd');
+      var sul = document.createElement('ul');
+      sul.className = 'scores';
+      note.scores.forEach(function (sc) {
+        var li = document.createElement('li');
+        li.appendChild(el('strong', null, sc.label + ': ' + sc.value + ' — '));
+        li.appendChild(document.createTextNode('Source: '));
+        if (sc.url) {
+          var a = document.createElement('a');
+          a.href = sc.url; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = sc.source;
+          li.appendChild(a);
+        } else {
+          li.appendChild(document.createTextNode(sc.source));
+        }
+        li.appendChild(document.createTextNode(' · ' + fmtCiteDate(sc.date)));
+        var kind = el('span', 'kind', ' (' + sc.kind + ')');
+        li.appendChild(kind);
+        sul.appendChild(li);
+      });
+      dd5.appendChild(sul);
+      dl.appendChild(dd5);
+    }
+    d.appendChild(dl);
+    if (note.notes) d.appendChild(el('p', 'note-line', 'Note: ' + note.notes));
+    d.appendChild(srcLinks(note.sources));
+    return d;
+  }
+
+  var CATEGORY_ORDER = ['everyday_coding', 'hard_engineering', 'planning', 'orchestration', 'quick_routine_jobs', 'deep_reasoning', 'writing_content', 'data_analysis', 'agentic_work'];
+  var PROVIDERS = [
+    { key: 'google', title: 'Google only', head: 'Gemini app / Google AI Pro / Ultra, Antigravity' },
+    { key: 'openai', title: 'OpenAI only', head: 'ChatGPT Plus / Pro, Codex, API' },
+    { key: 'claude', title: 'Claude only', head: 'Claude Free / Pro / Max, Claude Code' }
+  ];
+
+  function buildGuide(notes) {
+    var sec = el('section', 'guide');
+    sec.appendChild(el('h2', null, 'Which model for what'));
+    if (!notes) {
+      sec.appendChild(el('p', 'method', 'Analytical notes could not be loaded. The freshness list above is unaffected.'));
+      return sec;
+    }
+    var method = el('p', 'method');
+    method.textContent = notes.meta.method + ' ' + notes.meta.price_basis;
+    sec.appendChild(method);
+    if (notes.meta.safe_sources && notes.meta.safe_sources.length) {
+      var policy = el('p', 'method');
+      policy.appendChild(document.createTextNode('Score sources: '));
+      notes.meta.safe_sources.forEach(function (ss, i) {
+        if (i > 0) policy.appendChild(document.createTextNode(' · '));
+        if (ss.url) {
+          var a = document.createElement('a');
+          a.href = ss.url; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = ss.name;
+          policy.appendChild(a);
+        } else {
+          policy.appendChild(document.createTextNode(ss.name));
+        }
+        policy.appendChild(document.createTextNode(' — ' + ss.note));
+      });
+      sec.appendChild(policy);
+    }
+
+    CATEGORY_ORDER.forEach(function (key) {
+      var c = notes.categories[key];
+      if (!c) return;
+      var box = el('div', 'cat');
+      box.appendChild(el('h3', null, c.label));
+      var pick = el('p', 'pick');
+      pick.appendChild(el('strong', null, 'Best pick: ' + c.best.model + ' — '));
+      pick.appendChild(document.createTextNode(c.best.reason));
+      box.appendChild(pick);
+      box.appendChild(srcLinks(c.best.sources));
+      if (c.alternatives && c.alternatives.length) {
+        var ul = document.createElement('ul');
+        ul.className = 'alt';
+        c.alternatives.forEach(function (a) {
+          var li = document.createElement('li');
+          li.appendChild(el('strong', null, a.model + ' — '));
+          li.appendChild(document.createTextNode(a.reason + ' '));
+          if (a.sources && a.sources.length) li.appendChild(srcLinks(a.sources));
+          ul.appendChild(li);
+        });
+        box.appendChild(ul);
+      }
+      if (c.notes) box.appendChild(el('p', 'catnote', c.notes));
+      sec.appendChild(box);
+    });
+
+    var sub = el('div', 'sub');
+    sub.appendChild(el('h3', 'sub-title', 'If you only pay for one lab'));
+    sub.appendChild(el('p', 'sub-intro', 'API prices above do not apply inside a subscription. Claude Pro/Max, ChatGPT Plus/Pro and Google AI Pro/Ultra bundle models with usage limits. Below is the best model inside each subscription for each category — and the honest gap versus the cross-provider best pick.'));
+    PROVIDERS.forEach(function (prov) {
+      sub.appendChild(el('h4', null, prov.title));
+      sub.appendChild(el('p', 'subhead', prov.head));
+      var table = document.createElement('table');
+      var thead = document.createElement('thead');
+      var tr = document.createElement('tr');
+      ['Category', 'Pick', 'What you give up'].forEach(function (h) {
+        tr.appendChild(el('th', null, h));
+      });
+      thead.appendChild(tr);
+      table.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      CATEGORY_ORDER.forEach(function (key) {
+        var c = notes.categories[key];
+        if (!c || !c.per_provider || !c.per_provider[prov.key]) return;
+        var pp = c.per_provider[prov.key];
+        var row = document.createElement('tr');
+        row.appendChild(el('td', null, c.label));
+        var pickCell = el('td', null);
+        pickCell.appendChild(el('strong', null, pp.pick));
+        pickCell.appendChild(document.createTextNode(' — ' + pp.reason));
+        row.appendChild(pickCell);
+        row.appendChild(el('td', null, pp.gives_up));
+        tbody.appendChild(row);
+      });
+      table.appendChild(tbody);
+      var wrap = el('div', 'table-wrap');
+      wrap.appendChild(table);
+      sub.appendChild(wrap);
+    });
+    sec.appendChild(sub);
+
+    if (notes.unverified && notes.unverified.length) {
+      var uv = el('div', 'unver');
+      uv.appendChild(el('h3', null, 'Unverified — do not treat as fact'));
+      var ul2 = document.createElement('ul');
+      notes.unverified.forEach(function (item) {
+        var li = document.createElement('li');
+        li.appendChild(el('span', 'tag', 'UNVERIFIED'));
+        li.appendChild(document.createTextNode(item));
+        ul2.appendChild(li);
+      });
+      uv.appendChild(ul2);
+      sec.appendChild(uv);
+    }
+    return sec;
+  }
+
+  Promise.all([
+    fetch('models.json').then(function (r) { if (!r.ok) throw new Error('models.json HTTP ' + r.status); return r.json(); }),
+    fetch('model-notes.json').then(function (r) { if (!r.ok) throw new Error('model-notes.json HTTP ' + r.status); return r.json(); }).catch(function () { return null; })
+  ])
+    .then(function (parts) { render(parts[0], parts[1]); })
+    .catch(function (err) {
+      document.getElementById('app').innerHTML = '';
+      var p = el('p', 'error', 'Could not load model data (' + err.message + ').');
+      document.getElementById('app').appendChild(p);
+    });
+
+  function render(data, notes) {
+    if (notes && notes.meta && notes.meta.dated) CITE_DATE = fmtCiteDate(notes.meta.dated);
+    var app = document.getElementById('app');
+    app.innerHTML = '';
+
+    // Flatten with computed age/band.
+    var counts = { fresh: 0, warm: 0, cooling: 0, stale: 0 };
+    var newest = null;
+    data.labs.forEach(function (lab) {
+      lab.models.forEach(function (m) {
+        var rel = parseRelease(m.release);
+        m._days = daysSince(rel.date);
+        m._band = bandFor(m._days).key;
+        m._approx = rel.approx;
+        counts[m._band]++;
+        if (!newest || m._days < newest._days) newest = m;
+      });
+    });
+
+    // Summary counts per band.
+    var summary = el('div', 'summary');
+    BANDS.forEach(function (b) {
+      var cell = el('div', 'cell ' + b.key);
+      cell.appendChild(el('div', 'num', String(counts[b.key])));
+      cell.appendChild(el('div', 'lab', b.label));
+      summary.appendChild(cell);
+    });
+    app.appendChild(summary);
+
+    // Filter chips.
+    var filters = el('div', 'filters');
+    var current = 'all';
+    [['all', 'All'], ['fresh', 'Fresh'], ['warm', 'Warm'], ['cooling', 'Cooling'], ['stale', 'Stale']].forEach(function (f) {
+      var btn = el('button', null, f[1]);
+      btn.setAttribute('aria-pressed', f[0] === 'all' ? 'true' : 'false');
+      btn.addEventListener('click', function () {
+        current = f[0];
+        filters.querySelectorAll('button').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('.model').forEach(function (row) {
+          row.classList.toggle('hidden', current !== 'all' && row.dataset.band !== current);
+        });
+      });
+      filters.appendChild(btn);
+    });
+    app.appendChild(filters);
+
+    // Labs and models.
+    data.labs.forEach(function (lab) {
+      var sec = el('section', 'lab');
+      var h2 = el('h2', null, lab.company);
+      h2.appendChild(el('span', null, lab.models.length + ' models'));
+      sec.appendChild(h2);
+      lab.models.forEach(function (m) {
+        var row = el('div', 'model');
+        row.dataset.band = m._band;
+        var name = el('div', 'name', m.name);
+        if (m.note) name.appendChild(el('span', 'note', m.note));
+        row.appendChild(name);
+        row.appendChild(el('div', 'date', fmtDate(m.release, m._approx)));
+        row.appendChild(el('div', 'age', m._days + 'd ago'));
+        row.appendChild(el('div', 'band', bandFor(m._days).label + ' · ' + m._days + ' days'));
+        if (notes) {
+          var note = matchNote(m.name, notes);
+          if (note) row.appendChild(buildModelNotes(note));
+          else console.warn('No analytical note matched for model: ' + m.name);
+        }
+        sec.appendChild(row);
+      });
+      app.appendChild(sec);
+    });
+
+    // "Which model for what" guide — rendered from model-notes.json.
+    app.appendChild(buildGuide(notes));
+
+    // Health-check prompt section.
+    var ps = data.prompt_section;
+    var card = el('div', 'prompt-card');
+    card.appendChild(el('div', 'kicker', 'The new-model health check'));
+    card.appendChild(el('h2', null, ps.title));
+    var bq = document.createElement('blockquote');
+    bq.textContent = '“' + ps.prompt + '”';
+    card.appendChild(bq);
+    var split = el('p', 'split');
+    var strong = el('strong', null, 'The sure / uncertain split');
+    split.appendChild(strong);
+    split.appendChild(document.createTextNode(ps.split));
+    card.appendChild(split);
+    var ul = document.createElement('ul');
+    ps.safety_notes.forEach(function (n) {
+      var li = document.createElement('li');
+      li.textContent = n;
+      ul.appendChild(li);
+    });
+    card.appendChild(ul);
+    var btn = el('button', 'copy-btn', 'Copy the prompt');
+    btn.addEventListener('click', function () {
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy the prompt'; }, 2000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ps.prompt).then(done, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = ps.prompt; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
+        document.body.removeChild(ta);
+      }
+    });
+    card.appendChild(btn);
+    card.appendChild(el('p', 'attr', ps.attribution));
+    app.appendChild(card);
+
+    // Footer: status light + notes.
+    var footer = document.getElementById('footer');
+    footer.hidden = false;
+    var light = document.getElementById('status-light');
+    var statusText = document.getElementById('status-text');
+    // The tracker is "live" while its freshest model is still fresh.
+    if (newest && newest._band === 'fresh') {
+      light.classList.add('on');
+      statusText.textContent = 'DATA LIVE — newest model ' + newest.name + ' is ' + newest._days + ' days old';
+    } else {
+      light.classList.add('dim');
+      statusText.textContent = 'SNAPSHOT AGING — newest model ' + (newest ? newest.name + ' is ' + newest._days + ' days old' : 'unknown');
+    }
+    document.getElementById('footer-note').textContent = data.footer;
+    document.getElementById('footer-meta').textContent =
+      'Snapshot ' + data.snapshot_date + ' · Data last updated ' + data.updated_at +
+      ' · ' + data.labs.reduce(function (n, l) { return n + l.models.length; }, 0) + ' models across ' +
+      data.labs.length + ' labs · Source: models.dev, vendor announcements · Code: github.com/canoo/ModelFreshness';
+  }
+})();
+</script>
+</body>
+</html>

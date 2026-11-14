@@ -1,0 +1,36 @@
+name: Update models
+
+# Daily data refresh. This is a data-only auto-commit, not a PR: the point
+# of the tracker is that the data stays fresh without review burden. If you
+# would rather review changes first, switch the last step to create a pull
+# request instead of committing (see README.md).
+
+on:
+  schedule:
+    - cron: '30 12 * * *' # 05:30 MST / 06:30 MDT, daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch latest model releases
+        run: node scripts/fetch-models.mjs
+      - name: Commit data changes
+        run: |
+          if git diff --quiet -- data/models.json web/models.json; then
+            echo "No model changes."
+            exit 0
+          fi
+          git config user.name "ModelFreshness[bot]"
+          git config user.email "ModelFreshness[bot]@users.noreply.github.com"
+          git add data/models.json web/models.json
+          git commit -m "data: model updates $(date -u +%Y-%m-%d)"
+          git push
