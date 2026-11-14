@@ -49,7 +49,7 @@
       "alternatives": [
         {
           "model": "Claude Fable 5.2",
-          "reason": "Strongest independent-index standing in this report.",
+          "reason": "Strongest independent-index standing.",
           "sources": [
             "https://agentstacklist.com/guides/claude-fable-5-2/"
           ]
@@ -240,7 +240,7 @@
       ],
       "best": {
         "model": "Antigravity Orchestrator (Gemini 4 Carbon + Gemini 4 Hydrogen)",
-        "reason": "The only vendor-native orchestrator in this report. Carbon plans in a read-only sandbox, Hydrogen executes, control hands back to Carbon on friction. Google reports near-Carbon success on Terminal-Bench 4.1 (57.0% vs 57.3% solo Carbon) with 24% less quota and 19% faster completion (vendor-reported).",
+        "reason": "The only vendor-native orchestrator. Carbon plans in a read-only sandbox, Hydrogen executes, control hands back to Carbon on friction. Google reports near-Carbon success on Terminal-Bench 4.1 (57.0% vs 57.3% solo Carbon) with 24% less quota and 19% faster completion (vendor-reported).",
         "sources": [
           "https://softreviewed.com/antigravity-orchestrator-explained/",
           "https://winbuzzer.com/2026/11/12/google-antigravity-pairs-gemini-4-models-for-coding-xcxwbn/"
@@ -379,7 +379,7 @@
         ]
       },
       "label": "Writing / content",
-      "notes": "Writing quality has no single public benchmark in this pass; the pick follows vendor positioning, not a score.",
+      "notes": "Writing quality has no single public benchmark; the pick follows vendor positioning, not a score.",
       "per_provider": {
         "claude": {
           "gives_up": "Terra, whose positioning is specifically clear natural writing.",
@@ -401,7 +401,7 @@
   },
   "meta": {
     "dated": "2026-11-13",
-    "method": "Best-for picks are grounded first in the vendor's own changelog/announcement positioning. Benchmarks are secondary and subjective; where a score disagrees with vendor positioning the disagreement is flagged. Scores are cited individually with source, link and date. Artificial Analysis figures are not republished in bulk (licensing — their terms forbid redistribution, and their competitive-product clause covers comparison sites). Vendor-reported numbers are labelled as such and lead. No composite score is computed from different sources. Community notes are a planned future phase and are not included.",
+    "method": "Best-for picks are grounded first in the vendor's own changelog/announcement positioning. Benchmarks are secondary and subjective; where a score disagrees with vendor positioning the disagreement is flagged. Scores are cited individually with source, link and date. Vendor-reported numbers are labelled as such and lead. No composite score is computed from different sources.",
     "price_basis": "API list prices in USD per million tokens (input/output), short-context standard tier unless noted. Subscription plans bundle models with usage limits and do not bill per token.",
     "snapshot": "Nov 11, 2026 snapshot plus Gemini 4 Carbon (GA Nov 10, 2026) and Gemini 4 Hydrogen (launched Nov 12, 2026), both dates verified",
     "sources_note": "Vendor statements reached via secondary coverage quoting the vendor page are labelled as such in the sources arrays.",
@@ -422,14 +422,14 @@
         "name": "Epoch AI",
         "url": null,
         "date": "2026-11-13",
-        "note": "CC BY 4.0 — freely reusable with attribution. No figures used in this pass yet."
+        "note": "CC BY 4.0 — freely reusable with attribution. No figures used yet."
       }
     ]
   },
   "models": {
     "Claude Fable 5.2": {
       "avoid_for": [
-        "routine or high-volume work (most expensive per token in this report)",
+        "routine or high-volume work (most expensive per token)",
         "deployments requiring zero data retention"
       ],
       "best_for": [
@@ -702,7 +702,7 @@
       ],
       "context_window": "1,000,000 tokens (up to 384K output)",
       "lab": "DeepSeek",
-      "notes": "GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026 (tracker date). DeepSeek routed the deepseek-v4-pro endpoint to Flash from Sep 14, 2026. No independent index score found in this pass.",
+      "notes": "GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026. DeepSeek routed the deepseek-v4-pro endpoint to Flash from Sep 14, 2026. No independent index score found.",
       "price": {
         "input": 0.3,
         "note": "Peak rates. Off-peak $0.15/$0.60. Peak hours 01:00-04:00 and 06:00-10:00 UTC, Mon-Fri excl. Chinese public holidays. Cache hits $0.006 peak / $0.003 off-peak.",
@@ -718,7 +718,7 @@
         "Vendor: 'comprehensively surpassed V4 Pro in performance, cost, speed, and total time'",
         "552B parameters (8B active input, 16B active output), native vision, MIT-licensed weights",
         "Vendor-reported DeepSWE lead over V4 Pro — see scores below.",
-        "Cheapest capable general model in this report off-peak"
+        "Cheapest capable general model off-peak"
       ],
       "tier": "fast volume",
       "scores": [
@@ -797,7 +797,7 @@
       ],
       "context_window": "1,050,000 tokens (128K max output)",
       "lab": "OpenAI",
-      "notes": "No independent index score found for Luna in this pass. Knowledge cutoff May 18, 2026.",
+      "notes": "No independent index score found for Luna. Knowledge cutoff May 18, 2026.",
       "price": {
         "input": 0.1,
         "note": "Long context: $0.20/$0.75.",
@@ -810,7 +810,7 @@
       ],
       "strengths": [
         "Vendor: 'Our most efficient model for focused, high-volume tasks'",
-        "Cheapest frontier-family model in this report"
+        "Cheapest frontier-family model"
       ],
       "tier": "fast volume"
     },
@@ -908,7 +908,7 @@
       "notes": "Superseded by Gemini 4. Kept on tracker for freshness history.",
       "price": {
         "input": null,
-        "note": "unpublished — current API pricing not re-verified in this pass, not guessed",
+        "note": "unpublished — current API pricing not verified, not guessed",
         "output": null
       },
       "release": "2025-11-18",
@@ -930,7 +930,7 @@
       "notes": "Superseded by Gemini 4. Kept on tracker for freshness history.",
       "price": {
         "input": null,
-        "note": "unpublished — current API pricing not re-verified in this pass, not guessed",
+        "note": "unpublished — current API pricing not verified, not guessed",
         "output": null
       },
       "release": "2026-02-19",
@@ -1262,7 +1262,7 @@
       "strengths": [
         "Vendor: flagship for hard reasoning, coding, agents",
         "1.05T MoE (52B active), 1M context, open-weight",
-        "Cheapest frontier-class model in this report"
+        "Cheapest frontier-class model"
       ],
       "tier": "flagship"
     },
@@ -1387,7 +1387,7 @@
       "notes": "Later point releases (1.1, 1.2, 1.3) carry their own pricing.",
       "price": {
         "input": null,
-        "note": "unpublished — API price not verified in this pass, not guessed",
+        "note": "unpublished — API price not verified, not guessed",
         "output": null
       },
       "release": "2026-04-08",
@@ -1464,7 +1464,7 @@
       "notes": "Wonder Full is reserved for Muse Code subscribers and is not on the API. No independent index score found — do not rank against Fable/Carbon on scores.",
       "price": {
         "input": 4.0,
-        "note": "Secondary-sourced (OpenRouter catalog via secondary coverage); Meta's own API price list not directly verified in this pass.",
+        "note": "Secondary-sourced (OpenRouter catalog via secondary coverage); Meta's own API price list not directly verified.",
         "output": 20.0
       },
       "release": "2026-10-12",
@@ -1480,17 +1480,16 @@
     }
   },
   "unverified": [
-    "Muse Wonder independent standing: no independent index score found in this pass.",
+    "Muse Wonder independent standing: no independent index score found.",
     "Muse Spark 1.3 ($0.10/$0.20) and Muse Spark Open ($1.25/$4.25) prices: secondary-sourced (OpenRouter catalog), not Meta's own price list.",
     "Muse Spark (base, Apr 8, 2026) API price: not verified, marked unpublished.",
     "Gemini 3 Pro / Gemini 3.1 Pro current pricing: not re-verified, marked unpublished.",
-    "Grok 4.7 independent standing: Artificial Analysis figures are not republished in this tracker (licensing); independent standing was reported inconsistently across readings — treat as unverified.",
+    "Grok 4.7 independent standing: reported inconsistently across readings — treat as unverified.",
     "DeepSeek V4 Pro live status: DeepSeek said the endpoint would route to V4.1 Flash from Sep 14, 2026, then kept serving V4 Pro; pricing page still listed it Oct 29, 2026.",
-    "DeepSeek V4.1 Flash release date: GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026 (tracker date). Both recorded.",
+    "DeepSeek V4.1 Flash release date: GA Sep 10, 2026; 1017 checkpoint Oct 17, 2026. Both recorded.",
     "Orchestrator benchmark version: Google's DeepMind post says Terminal-Bench 4.0, the Antigravity blog says 4.1, for the same 24%/19% figures.",
     "Writing quality and data analysis categories: no dedicated public benchmark found; picks follow vendor positioning plus adjacent subtest evidence.",
-    "GPT-6 Luna independent index score: none found in this pass.",
-    "Manual orchestration patterns for Claude/OpenAI (plan with flagship, execute with cheaper tier): workflow inference, not a vendor feature.",
-    "Artificial Analysis Intelligence Index figures were consulted during research (Nov 13, 2026) but are not republished in the tracker; see the scores policy in the method note above."
+    "GPT-6 Luna independent index score: none found.",
+    "Manual orchestration patterns for Claude/OpenAI (plan with flagship, execute with cheaper tier): workflow inference, not a vendor feature."
   ]
 }

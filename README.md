@@ -38,26 +38,17 @@ its own changelog or announcement — the company's stated intent for the
 model. Benchmarks are secondary and subjective; where a score disagrees
 with the vendor's positioning the disagreement is flagged and the pick
 still follows vendor intent. Anything that could not be verified is shown
-in the UI as "unverified" and never asserted as fact. Full methodology,
-per-model write-ups and the source list live in
-`docs/analytical-notes.md`.
+in the UI as "unverified" and never asserted as fact.
 
 **Scores policy:** every score on the page is cited individually with
-source, link and date. Artificial Analysis figures are not republished in
-bulk — their terms forbid redistribution and their competitive-product
-clause covers comparison sites like this one; the index was consulted
-during research (Nov 13, 2026) and is named in the method note, but its
-numbers do not appear in `model-notes.json`. Vendor-reported numbers are
+source, link and date. Artificial Analysis figures are not shown on the site. Vendor-reported numbers are
 labelled as such and lead. LMArena leaderboards and Epoch AI data are
 CC BY 4.0 and freely reusable with attribution — LMArena figures appear
 where used, with the note that they measure human preference (Elo votes),
 not task completion. No composite score is ever computed from different
 sources.
 
-**Community notes are a planned future phase** — this pass deliberately
-contains no community opinions or user reports.
-
-`data/model-notes.json` is hand-researched, not auto-updated: the daily
+`data/model-notes.json` is updated by hand, not auto-updated: the daily
 fetch script does not mirror it yet, so copy `data/model-notes.json` to
 `web/model-notes.json` by hand when the notes change, and commit both
 together.
@@ -72,7 +63,6 @@ scripts/fetch-models.mjs  daily updater — pulls models.dev, diffs, writes data
 web/index.html            the page — single static file, fetches models.json
 web/models.json           copy of the data, kept in sync by the fetch script
 web/model-notes.json      copy of the notes — sync by hand for now (see above)
-docs/analytical-notes.md  full methodology + source list for the notes
 .github/workflows/
   update-models.yml       daily fetch + auto-commit when data changes
   deploy-pages.yml        publishes web/ to GitHub Pages on push
