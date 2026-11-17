@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "snapshot_date": "2026-11-11",
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-17",
   "bands": {
     "fresh": {
       "max_days": 14,
@@ -59,6 +59,18 @@
     {
       "company": "OpenAI",
       "models": [
+        {
+          "name": "GPT-6.2 Sol",
+          "release": "2026-11-17",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.2-sol"
+        },
+        {
+          "name": "GPT-6.2 Astra",
+          "release": "2026-11-17",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.2-astra"
+        },
         {
           "name": "Cyber",
           "release": "2026-11-05",
