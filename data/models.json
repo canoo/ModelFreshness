@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "snapshot_date": "2026-11-11",
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-19",
   "bands": {
     "fresh": {
       "max_days": 14,
@@ -111,6 +111,12 @@
     {
       "company": "Google",
       "models": [
+        {
+          "name": "Gemini 4 Neon",
+          "release": "2026-11-18",
+          "source": "models.dev",
+          "models_dev_id": "gemini-4-neon"
+        },
         {
           "name": "Gemini 4 Hydrogen",
           "release": "2026-11-12",
