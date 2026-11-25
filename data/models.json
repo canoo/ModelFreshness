@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "snapshot_date": "2026-11-11",
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-25",
   "bands": {
     "fresh": {
       "max_days": 14,
@@ -59,6 +59,18 @@
     {
       "company": "OpenAI",
       "models": [
+        {
+          "name": "GPT-6.2 Sol Healthcare",
+          "release": "2026-11-24",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.2-sol-healthcare"
+        },
+        {
+          "name": "GPT-6.2 Astra Healthcare",
+          "release": "2026-11-24",
+          "source": "models.dev",
+          "models_dev_id": "gpt-6.2-astra-healthcare"
+        },
         {
           "name": "GPT-6.2 Sol",
           "release": "2026-11-17",
